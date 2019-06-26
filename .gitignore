@@ -53,6 +53,7 @@ dlldata.c
 *.psess
 *.vsp
 *.vspx
+*.user
 
 # ReSharper is a .NET coding add-in
 _ReSharper*/
