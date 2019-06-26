@@ -43,6 +43,49 @@
         }
 
         [Test]
+        public void CompareReports_ForSameSpNameInDifferentDb_ReturnsNoErrors()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var masterReport = new SqlReport
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>
+                {
+                    MakeReturn("Database1:dbo:StoredProcedure1:[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))"),
+                    MakeReturn("Database2:schema1:StoredProcedure2:C.SomeAmount"),
+                    MakeReturn("Database2:schema1:StoredProcedure2:C.Name"),
+                    MakeReturn("Database2:schema1:StoredProcedure2:C.Id"),
+                    MakeReturn("Database3:schema1:StoredProcedure2:C.SomeAmount"),
+                    MakeReturn("Database3:schema1:StoredProcedure2:C.Name"),
+                    MakeReturn("Database3:schema1:StoredProcedure2:C.Id")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>
+                {
+                    MakeReturn("Database1:dbo:StoredProcedure1:[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))"),
+                    MakeReturn("Database2:schema1:StoredProcedure2:C.SomeAmount"),
+                    MakeReturn("Database2:schema1:StoredProcedure2:C.Name"),
+                    MakeReturn("Database2:schema1:StoredProcedure2:C.Id"),
+                    MakeReturn("Database2:schema1:StoredProcedure2:C.OtherValue"),
+                    MakeReturn("Database3:schema1:StoredProcedure2:C.SomeAmount"),
+                    MakeReturn("Database3:schema1:StoredProcedure2:C.Name"),
+                    MakeReturn("Database3:schema1:StoredProcedure2:C.Id")
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
         public void CompareReports_ForMissingValue_ReturnsError()
         {
             // Setup

@@ -25,17 +25,17 @@
 
             foreach (var sp in masterReport.ReturnValues)
             {
-                if (!_existingSps.Contains(sp.SpName))
+                if (!_existingSps.Contains(sp.SpUniqueName))
                 {
-                    _existingSps.Add(sp.SpName);
+                    _existingSps.Add(sp.SpUniqueName);
                 }
             }
 
             foreach (var sp in newReport.ReturnValues)
             {
-                if (!_newSps.Contains(sp.SpName))
+                if (!_newSps.Contains(sp.SpUniqueName))
                 {
-                    _newSps.Add(sp.SpName);
+                    _newSps.Add(sp.SpUniqueName);
                 }
             }
         }
@@ -48,8 +48,8 @@
                     newReport.ReturnValues.Where(
                         x => x.ReturnValueNameId == returnValue.ReturnValueNameId).ToList();
 
-                if (!newReturnValue.Any() && _existingSps.Contains(returnValue.SpName)
-                                          && _newSps.Contains(returnValue.SpName))
+                if (!newReturnValue.Any() && _existingSps.Contains(returnValue.SpUniqueName)
+                                          && _newSps.Contains(returnValue.SpUniqueName))
                 {
                     errors.Add($"{returnValue.ReturnValueNameId}|existing return value is missing from new code");
                 }
@@ -61,10 +61,10 @@
             foreach (var sp in _existingSps)
             {
                 var oldReturnValueList =
-                    masterReport.ReturnValues.Where(x => x.SpName == sp).ToList();
+                    masterReport.ReturnValues.Where(x => x.SpUniqueName == sp).ToList();
 
                 var newReturnValueList =
-                    newReport.ReturnValues.Where(x => x.SpName == sp).ToList();
+                    newReport.ReturnValues.Where(x => x.SpUniqueName == sp).ToList();
 
                 if (newReturnValueList.Count < oldReturnValueList.Count)
                 {

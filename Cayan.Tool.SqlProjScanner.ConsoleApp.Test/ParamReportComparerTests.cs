@@ -72,6 +72,43 @@
         }
 
         [Test]
+        public void CompareReports_ForSameSpNameInDifferentDb_DoesNotReturnError()
+        {
+            // Setup
+            var comparer = new ParamReportComparer();
+            var masterReport = new SqlReport
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
+                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
+                    MakeParam("DB2.dbo.LoadSomething1.@id", false),
+                    MakeParam("DB2.dbo.LoadSomething1.@data", true)
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
+                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
+                    MakeParam("DB1.dbo.LoadSomething1.@username", true),
+                    MakeParam("DB2.dbo.LoadSomething1.@id", false),
+                    MakeParam("DB2.dbo.LoadSomething1.@data", true)
+                }
+            };
+
+            var errors = new List<string>();
+
+            // Act
+            comparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
         public void CompareReports_ForNewNonDefaultInNewSp_DoesNotReturnError()
         {
             // Setup
