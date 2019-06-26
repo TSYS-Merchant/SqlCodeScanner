@@ -5,8 +5,7 @@
     public class StoredProcedureParameterScanner
     {
         public void ScanSpParameters(SqlReport sqlReport,
-            CreateProcedureStatement sp, string db, string schema,
-            SqlReportWriter sqlParameterReportWriter)
+            CreateProcedureStatement sp, string db, string schema)
         {
 
             if (sp.Parameters.Count == 0)

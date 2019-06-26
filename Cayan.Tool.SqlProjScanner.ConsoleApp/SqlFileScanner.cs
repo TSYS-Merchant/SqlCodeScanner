@@ -157,12 +157,10 @@
                     }
 
                     parameterScanner.ScanSpParameters(
-                        _sqlReport, sp, db, schema,
-                        _sqlParameterReportWriter);
+                        _sqlReport, sp, db, schema);
 
                     returnValueScanner.ScanReturnValues(
-                        _sqlReport, sp, db, schema,
-                        _sqlParameterReportWriter);
+                        _sqlReport, sp, db, schema);
                 }
             }
         }

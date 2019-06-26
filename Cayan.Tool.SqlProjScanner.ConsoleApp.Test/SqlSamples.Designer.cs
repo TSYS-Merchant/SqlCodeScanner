@@ -130,6 +130,29 @@ namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE [Schema].[NoBeginSp]
+        ///	@Id AS VARCHAR(100)
+        ///AS
+        ///
+        ///SET NOCOUNT ON;
+        ///
+        ///SELECT AName,
+        ///	   AnId,
+        ///	   APhoneNumber,
+        ///	   SomethingElse,
+        ///	   SomethingElseAgain
+        ///FROM dbo.APerson
+        ///WHERE TheId = @Id;
+        ///
+        ///GO.
+        /// </summary>
+        internal static string NoBeginSp {
+            get {
+                return ResourceManager.GetString("NoBeginSp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CREATE PROCEDURE dbo.NoParametersOrReturnValues
         ///AS
         ///BEGIN
@@ -203,6 +226,38 @@ namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test {
         internal static string RetrieveOneUseCoupon {
             get {
                 return ResourceManager.GetString("RetrieveOneUseCoupon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE [Schema].[UnionSp]
+        ///	@Key AS INT,
+        ///	@Id AS VARCHAR(100)
+        ///AS
+        ///BEGIN
+        ///
+        ///SET NOCOUNT ON;
+        ///	
+        ///SELECT TOP 1
+        ///			NameOfTransaction,
+        ///			DateofTransaction
+        ///	FROM dbo.TransactionTable
+        ///	WHERE TheKey = @Key
+        ///	AND Id = @Id
+        ///UNION ALL
+        ///SELECT TOP 1
+        ///			NameOfTransaction,
+        ///			DateofTransaction
+        ///	FROM dbo.TransactionTable2
+        ///	WHERE TheKey = @Key
+        ///	AND Id = @Id
+        ///	
+        ///END
+        ///GO.
+        /// </summary>
+        internal static string UnionSp {
+            get {
+                return ResourceManager.GetString("UnionSp", resourceCulture);
             }
         }
     }
