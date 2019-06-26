@@ -230,6 +230,25 @@ namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE [Star].[StarTestWithStar]
+        ///	@SomeName AS VARCHAR(100)
+        ///AS
+        ///
+        ///SET NOCOUNT ON;
+        ///
+        ///SELECT *
+        ///FROM dbo.SomeTable
+        ///WHERE TheName = @SomeName;
+        ///
+        ///GO.
+        /// </summary>
+        internal static string StarTestWithStar {
+            get {
+                return ResourceManager.GetString("StarTestWithStar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CREATE PROCEDURE [Schema].[UnionSp]
         ///	@Key AS INT,
         ///	@Id AS VARCHAR(100)

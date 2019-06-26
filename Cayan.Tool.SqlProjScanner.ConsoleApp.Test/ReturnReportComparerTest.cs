@@ -235,6 +235,40 @@
             Assert.That(errors[0], Is.EqualTo("Database2\\schema1\\StoredProcedure2\\C.Id|existing return value is out of order"));
         }
 
+        [Test]
+        public void CompareReports_StarReplacesWithParamNames_ReturnsError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var masterReport = new SqlReport
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>
+                {
+                    MakeReturn("Database1:dbo:StoredProcedure1:*")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>
+                {
+                    MakeReturn("Database1:dbo:StoredProcedure1:Param1"),
+                    MakeReturn("Database1:dbo:StoredProcedure1:Param2"),
+                    MakeReturn("Database1:dbo:StoredProcedure1:Param2")
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(2));
+            Assert.That(errors[0], Is.EqualTo("Database1\\dbo\\StoredProcedure1\\*|existing return value is missing from new code"));
+            Assert.That(errors[1], Is.EqualTo("Database1\\dbo\\StoredProcedure1\\*|existing return value is out of order"));
+        }
+
         private ReturnSqlReportEntry MakeReturn(string entry)
         {
             var entryItems = entry.Split(':');

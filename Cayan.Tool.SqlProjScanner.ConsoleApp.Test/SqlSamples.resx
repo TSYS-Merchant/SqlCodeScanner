@@ -263,6 +263,19 @@ BEGIN
 END
 GO</value>
   </data>
+  <data name="StarTestWithStar" xml:space="preserve">
+    <value>CREATE PROCEDURE [Star].[StarTestWithStar]
+	@SomeName AS VARCHAR(100)
+AS
+
+SET NOCOUNT ON;
+
+SELECT *
+FROM dbo.SomeTable
+WHERE TheName = @SomeName;
+
+GO</value>
+  </data>
   <data name="UnionSp" xml:space="preserve">
     <value>CREATE PROCEDURE [Schema].[UnionSp]
 	@Key AS INT,
