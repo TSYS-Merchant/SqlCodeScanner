@@ -1,5 +1,6 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Wrappers
 {
+    using ReportObjects;
     using System;
 
     public interface IXmlStreamWriterWrapper : IDisposable

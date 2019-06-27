@@ -1,6 +1,7 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test
 {
     using NUnit.Framework;
+    using ReportObjects;
     using System.Collections.Generic;
 
     [TestFixture]

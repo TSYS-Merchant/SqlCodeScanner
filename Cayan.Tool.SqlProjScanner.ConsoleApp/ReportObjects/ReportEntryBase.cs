@@ -1,4 +1,4 @@
-﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp
+﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp.ReportObjects
 {
     public class ReportEntryBase
     {

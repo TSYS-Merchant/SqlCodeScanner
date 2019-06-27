@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test
+﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test
 {
     using NSubstitute;
     using NUnit.Framework;
+    using ReportObjects;
+    using System.Collections.Generic;
     using Wrappers;
 
     [TestFixture]

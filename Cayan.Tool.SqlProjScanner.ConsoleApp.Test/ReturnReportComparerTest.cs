@@ -1,5 +1,6 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test
 {
+    using ReportObjects;
     using System.Collections.Generic;
     using NUnit.Framework;
 

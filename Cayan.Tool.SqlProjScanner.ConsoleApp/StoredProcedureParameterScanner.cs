@@ -1,6 +1,7 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp
 {
     using Microsoft.SqlServer.TransactSql.ScriptDom;
+    using ReportObjects;
 
     public class StoredProcedureParameterScanner
     {

@@ -1,4 +1,4 @@
-﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp
+﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp.ReportObjects
 {
     using System.Collections.Generic;
     using System.Xml.Serialization;

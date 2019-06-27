@@ -1,5 +1,6 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp
 {
+    using ReportObjects;
     using System;
     using System.IO;
     using System.Xml.Serialization;

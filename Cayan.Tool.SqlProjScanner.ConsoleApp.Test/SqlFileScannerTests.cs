@@ -2,6 +2,7 @@
 {
     using NSubstitute;
     using NUnit.Framework;
+    using ReportObjects;
     using System;
     using System.Collections.Generic;
     using Wrappers;

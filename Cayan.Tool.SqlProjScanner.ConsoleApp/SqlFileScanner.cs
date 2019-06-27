@@ -1,6 +1,7 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp
 {
     using Microsoft.SqlServer.TransactSql.ScriptDom;
+    using ReportObjects;
     using System;
     using System.Configuration;
     using System.IO;

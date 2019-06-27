@@ -1,6 +1,7 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp
 {
     using System.Collections.Generic;
+    using ReportObjects;
 
     public interface IParamReportComparer
     {
