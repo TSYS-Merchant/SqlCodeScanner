@@ -1,5 +1,6 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Wrappers
 {
+    using ReportObjects;
     using System;
 
     public interface IXmlStreamWriterWrapper : IDisposable
@@ -12,8 +13,6 @@
 
         void Flush();
 
-        void SerializeSqlReportElement(ParamSqlReportEntry entry);
-
-        void SerializeSqlReportElement(ReturnSqlReportEntry entry);
+        void SerializeSqlReportElement(StoredProcedureReport entry);
     }
 }

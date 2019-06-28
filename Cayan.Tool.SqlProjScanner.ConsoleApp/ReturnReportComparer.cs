@@ -1,84 +1,57 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp
 {
+    using ReportObjects;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
     public class ReturnReportComparer : IReturnReportComparer
     {
-        private List<string> _existingSps;
-        private List<string> _newSps;
 
         public void CompareReports(SqlReport masterReport, SqlReport newReport, List<string> errors)
         {
-            Init(masterReport, newReport);
 
-            CheckForMissingReturnValues(masterReport, newReport, errors);
-
-            CheckReturnValueOrder(masterReport, newReport, errors);
-        }
-
-        private void Init(SqlReport masterReport, SqlReport newReport)
-        {
-            _existingSps = new List<string>();
-            _newSps = new List<string>();
-
-            foreach (var sp in masterReport.ReturnValues)
+            Parallel.ForEach(masterReport.StoredProcedures, (masterSp) =>
             {
-                if (!_existingSps.Contains(sp.SpUniqueName))
-                {
-                    _existingSps.Add(sp.SpUniqueName);
-                }
-            }
+                var newSp =
+                    newReport.StoredProcedures.FirstOrDefault(
+                        x => x.SpUniqueName == masterSp.SpUniqueName);
 
-            foreach (var sp in newReport.ReturnValues)
-            {
-                if (!_newSps.Contains(sp.SpUniqueName))
+                if (newSp == null)
                 {
-                    _newSps.Add(sp.SpUniqueName);
+                    return;
                 }
-            }
-        }
 
-        private void CheckForMissingReturnValues(SqlReport masterReport, SqlReport newReport, List<string> errors)
-        {
-            Parallel.ForEach(masterReport.ReturnValues, (returnValue) =>
-            {
-                var newReturnValue =
-                    newReport.ReturnValues.Where(
-                        x => x.ReturnValueNameId == returnValue.ReturnValueNameId).ToList();
-
-                if (!newReturnValue.Any() && _existingSps.Contains(returnValue.SpUniqueName)
-                                          && _newSps.Contains(returnValue.SpUniqueName))
-                {
-                    errors.Add($"{returnValue.ReturnValueNameId}|existing return value is missing from new code");
-                }
+                CheckForMissingReturnValues(masterSp, newSp, errors);
+                CheckReturnValueOrder(masterSp, newSp, errors);
             });
         }
 
-        private void CheckReturnValueOrder(SqlReport masterReport, SqlReport newReport, List<string> errors)
+        private void CheckForMissingReturnValues(StoredProcedureReport masterSp,
+            StoredProcedureReport newSp, List<string> errors)
         {
-            foreach (var sp in _existingSps)
+            foreach (var masterReturnValue in masterSp.ReturnValues)
             {
-                var oldReturnValueList =
-                    masterReport.ReturnValues.Where(x => x.SpUniqueName == sp).ToList();
+                var newReturnValue = newSp.ReturnValues.FirstOrDefault(
+                    x => x.ReturnValueName == masterReturnValue.ReturnValueName);
 
-                var newReturnValueList =
-                    newReport.ReturnValues.Where(x => x.SpUniqueName == sp).ToList();
-
-                if (newReturnValueList.Count < oldReturnValueList.Count)
+                if (newReturnValue == null)
                 {
-                    continue;
-                }
-
-                for (var i = 0; i < oldReturnValueList.Count; i++)
-                {
-                    if (oldReturnValueList[i].ReturnValueNameId != newReturnValueList[i].ReturnValueNameId)
-                    {
-                        errors.Add($"{oldReturnValueList[i].ReturnValueNameId}|existing return value is out of order");
-                    }
+                    errors.Add($"{masterSp.SpUniqueName}\\{masterReturnValue.ReturnValueName}|existing return value is missing from new code");
                 }
             }
+        }
+
+        private void CheckReturnValueOrder(StoredProcedureReport masterSp,
+            StoredProcedureReport newSp, List<string> errors)
+        {
+            if (newSp.ReturnValues.Count < masterSp.ReturnValues.Count)
+            {
+                return;
+            }
+
+            errors.AddRange(masterSp.ReturnValues.Where((t, i) => t.ReturnValueName != newSp.ReturnValues[i].ReturnValueName)
+                .Select(t => $"{masterSp.SpUniqueName}\\{t.ReturnValueName}|existing return value is out of order"));
         }
     }
 }

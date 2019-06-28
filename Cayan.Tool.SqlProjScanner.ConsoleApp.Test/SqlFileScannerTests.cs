@@ -2,6 +2,7 @@
 {
     using NSubstitute;
     using NUnit.Framework;
+    using ReportObjects;
     using System;
     using System.Collections.Generic;
     using Wrappers;
@@ -54,8 +55,113 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.Received(4).SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<StoredProcedureReport>());
+            xmlWriter.Received(1).WriteEndElement();
+            fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
+            htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
+        }
+
+        [Test]
+        public void OrchestrateSqlReport_ForCreateMasterReportAndHiddenSelectStatements_CreatesMasterReport()
+        {
+            // Setup
+            var fileWrapper = Substitute.For<IFileWrapper>();
+            var xmlWriter = Substitute.For<IXmlStreamWriterWrapper>();
+            var xmlWrapper = Substitute.For<IXmlStreamWrapperFactory>();
+            var sqlDirectories = new List<IDirectoryInfoWrapper>();
+            var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
+            var paramReportComparer = Substitute.For<IParamReportComparer>();
+            var returnReportComparer = Substitute.For<IReturnReportComparer>();
+
+            xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
+
+            var sqlFileData = new List<List<List<string>>>
+            {
+                new List<List<string>>
+                {
+                    new List<string>
+                    {
+                        "HiddenSelectStatements.sql",
+                        "path\\sql\\theDB\\dbo\\Stored Procedures\\",
+                        SqlSamples.HiddenSelectStatements
+                    }
+                },
+                new List<List<string>>()
+            };
+
+            var directoryFactory =
+                SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
+
+            var scanner =
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+
+            // Act
+            var result = scanner.OrchestrateSqlReport(
+                "path\\sql", "reports\\data.xml",
+                null,
+                true);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(true));
+
+            xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x =>
+                x.ReturnValues.Count == 2));
+
+            xmlWriter.Received(1).WriteEndElement();
+            fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
+            htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
+        }
+
+        [Test]
+        public void OrchestrateSqlReport_ForVariableSetters_CreatesMasterReport()
+        {
+            // Setup
+            var fileWrapper = Substitute.For<IFileWrapper>();
+            var xmlWriter = Substitute.For<IXmlStreamWriterWrapper>();
+            var xmlWrapper = Substitute.For<IXmlStreamWrapperFactory>();
+            var sqlDirectories = new List<IDirectoryInfoWrapper>();
+            var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
+            var paramReportComparer = Substitute.For<IParamReportComparer>();
+            var returnReportComparer = Substitute.For<IReturnReportComparer>();
+
+            xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
+
+            var sqlFileData = new List<List<List<string>>>
+            {
+                new List<List<string>>
+                {
+                    new List<string>
+                    {
+                        "HasVariableSetters.sql",
+                        "path\\sql\\theDB\\dbo\\Stored Procedures\\",
+                        SqlSamples.HasVariableSetters
+                    }
+                },
+                new List<List<string>>()
+            };
+
+            var directoryFactory =
+                SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
+
+            var scanner =
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+
+            // Act
+            var result = scanner.OrchestrateSqlReport(
+                "path\\sql", "reports\\data.xml",
+                null,
+                true);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(true));
+
+            xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x =>
+                x.ReturnValues.Count == 1));
+
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
@@ -105,8 +211,10 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.Received(2).SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.Received(4).SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x => x.Parameters.Count == 2));
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x => x.ReturnValues.Count == 4));
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
@@ -156,8 +264,7 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<StoredProcedureReport>());
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
@@ -207,8 +314,7 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.Received(5).SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<StoredProcedureReport>());
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
@@ -254,8 +360,7 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.DidNotReceive().SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.DidNotReceive().SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.DidNotReceive().SerializeSqlReportElement(Arg.Any<StoredProcedureReport>());
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
@@ -457,11 +562,11 @@
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
 
             xmlWriter.Received(1).SerializeSqlReportElement(
-                Arg.Is<ParamSqlReportEntry>(
+                Arg.Is<StoredProcedureReport>(
                     x => x.SpName == "FindUserWithId"));
 
-            xmlWriter.Received(4).SerializeSqlReportElement(
-                Arg.Is<ReturnSqlReportEntry>(
+            xmlWriter.Received(1).SerializeSqlReportElement(
+                Arg.Is<StoredProcedureReport>(
                     x => x.SpName == "FindUserWithId"));
 
             xmlWriter.Received(1).WriteEndElement();
@@ -716,8 +821,11 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.DidNotReceive().SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.DidNotReceive().SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x => x.Parameters.Count == 0));
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x => x.ReturnValues.Count == 0));
+            xmlWriter.Received(1).WriteEndElement();
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());

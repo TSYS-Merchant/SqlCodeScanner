@@ -1,6 +1,7 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test
 {
     using NUnit.Framework;
+    using ReportObjects;
     using System.Collections.Generic;
 
     [TestFixture]
@@ -11,21 +12,87 @@
         {
             // Setup
             var comparer = new ParamReportComparer();
-            var masterReport = new SqlReport
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
                 }
             };
 
             var newReport = new SqlReport
             {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            var errors = new List<string>();
+
+            // Act
+            comparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void CompareReports_ForExistingParamDefaulted_ReturnsNoError()
+        {
+            // Setup
+            var comparer = new ParamReportComparer();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", true),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
                 }
             };
 
@@ -43,22 +110,39 @@
         {
             // Setup
             var comparer = new ParamReportComparer();
-            var masterReport = new SqlReport
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true),
+                    new ParamSqlReportEntry("@username", true)
                 }
             };
 
             var newReport = new SqlReport
             {
-                Parameters = new List<ParamSqlReportEntry>
+                StoredProcedures = new List<StoredProcedureReport>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething1.@username", true)
+                    sp2
                 }
             };
 
@@ -76,26 +160,58 @@
         {
             // Setup
             var comparer = new ParamReportComparer();
-            var masterReport = new SqlReport
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB2.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB2.dbo.LoadSomething1.@data", true)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB2", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1,
+                    sp2
+                }
+            };
+
+            var sp3 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp4 = new StoredProcedureReport("DB2", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
                 }
             };
 
             var newReport = new SqlReport
             {
-                Parameters = new List<ParamSqlReportEntry>
+                StoredProcedures = new List<StoredProcedureReport>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething1.@username", true),
-                    MakeParam("DB2.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB2.dbo.LoadSomething1.@data", true)
+                    sp3,
+                    sp4
                 }
             };
 
@@ -114,22 +230,47 @@
             // Setup
             var comparer = new ParamReportComparer();
 
-            var masterReport = new SqlReport
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
                 }
             };
 
-            var newReport = new SqlReport
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@id", false)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp3 = new StoredProcedureReport("DB1", "dbo", "LoadSomething2")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false)
+                }
+            };
+
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2,
+                    sp3
                 }
             };
 
@@ -148,32 +289,79 @@
             // Setup
             var comparer = new ParamReportComparer();
 
-            var masterReport = new SqlReport
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@name", false),
-                    MakeParam("DB1.dbo.LoadSomething2.@address", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@phone", false),
-                    MakeParam("DB1.dbo.LoadSomething3.@id", true),
-                    MakeParam("DB1.dbo.LoadSomething3.@style", true)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething2")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@name", false),
+                    new ParamSqlReportEntry("@address", true),
+                    new ParamSqlReportEntry("@phone", false)
+                }
+            };
+
+            var sp3 = new StoredProcedureReport("DB1", "dbo", "LoadSomething3")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", true),
+                    new ParamSqlReportEntry("@style", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1,
+                    sp2,
+                    sp3
+                }
+            };
+
+            var sp4 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp5 = new StoredProcedureReport("DB1", "dbo", "LoadSomething2")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@name", false),
+                    new ParamSqlReportEntry("@address", true),
+                    new ParamSqlReportEntry("@phone", false)
+                }
+            };
+
+            var sp6 = new StoredProcedureReport("DB1", "dbo", "LoadSomething3")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", true),
+                    new ParamSqlReportEntry("@style", true)
                 }
             };
 
             var newReport = new SqlReport
             {
-                Parameters = new List<ParamSqlReportEntry>
+                StoredProcedures = new List<StoredProcedureReport>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@name", false),
-                    MakeParam("DB1.dbo.LoadSomething2.@address", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@phone", false),
-                    MakeParam("DB1.dbo.LoadSomething3.@id", true),
-                    MakeParam("DB1.dbo.LoadSomething3.@style", true),
-                    MakeParam("DB1.dbo.LoadSomething4.@menu", false)
+                    sp4,
+                    sp5,
+                    sp6
                 }
             };
 
@@ -191,20 +379,37 @@
         {
             // Setup
             var comparer = new ParamReportComparer();
-            var masterReport = new SqlReport
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@data", true)
                 }
             };
 
             var newReport = new SqlReport
             {
-                Parameters = new List<ParamSqlReportEntry>
+                StoredProcedures = new List<StoredProcedureReport>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true)
+                    sp2
                 }
             };
 
@@ -224,21 +429,37 @@
             // Setup
             var comparer = new ParamReportComparer();
 
-            var masterReport = new SqlReport
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", false)
                 }
             };
 
             var newReport = new SqlReport
             {
-                Parameters = new List<ParamSqlReportEntry>
+                StoredProcedures = new List<StoredProcedureReport>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", false)
+                    sp2
                 }
             };
 
@@ -258,22 +479,38 @@
             // Setup
             var comparer = new ParamReportComparer();
 
-            var masterReport = new SqlReport
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true),
+                    new ParamSqlReportEntry("@name", false)
                 }
             };
 
             var newReport = new SqlReport
             {
-                Parameters = new List<ParamSqlReportEntry>
+                StoredProcedures = new List<StoredProcedureReport>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething1.@name", false)
+                    sp2
                 }
             };
 
@@ -293,31 +530,79 @@
             // Setup
             var comparer = new ParamReportComparer();
 
-            var masterReport = new SqlReport
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@name", false),
-                    MakeParam("DB1.dbo.LoadSomething2.@address", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@phone", false),
-                    MakeParam("DB1.dbo.LoadSomething3.@id", true),
-                    MakeParam("DB1.dbo.LoadSomething3.@style", true)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething2")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@name", false),
+                    new ParamSqlReportEntry("@address", true),
+                    new ParamSqlReportEntry("@phone", false)
+                }
+            };
+
+            var sp3 = new StoredProcedureReport("DB1", "dbo", "LoadSomething3")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", true),
+                    new ParamSqlReportEntry("@style", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1,
+                    sp2,
+                    sp3
+                }
+            };
+
+            var sp4 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp5 = new StoredProcedureReport("DB1", "dbo", "LoadSomething2")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@name", false),
+                    new ParamSqlReportEntry("@phone", false),
+                    new ParamSqlReportEntry("@address", true)
+                }
+            };
+
+            var sp6 = new StoredProcedureReport("DB1", "dbo", "LoadSomething3")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", true),
+                    new ParamSqlReportEntry("@style", true)
                 }
             };
 
             var newReport = new SqlReport
             {
-                Parameters = new List<ParamSqlReportEntry>
+                StoredProcedures = new List<StoredProcedureReport>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@name", false),
-                    MakeParam("DB1.dbo.LoadSomething2.@phone", false),
-                    MakeParam("DB1.dbo.LoadSomething2.@address", true),
-                    MakeParam("DB1.dbo.LoadSomething3.@id", true),
-                    MakeParam("DB1.dbo.LoadSomething3.@style", true)
+                   sp4,
+                   sp5,
+                   sp6
                 }
             };
 
@@ -338,24 +623,64 @@
             // Setup
             var comparer = new ParamReportComparer();
 
-            var masterReport = new SqlReport
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@name", false),
-                    MakeParam("DB1.dbo.LoadSomething3.@info", false)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething2")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@name", false)
+                }
+            };
+
+            var sp3 = new StoredProcedureReport("DB1", "dbo", "LoadSomething3")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@info", false)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                   sp1,
+                   sp2,
+                   sp3
+                }
+            };
+
+            var sp4 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp5 = new StoredProcedureReport("DB1", "dbo", "LoadSomething3")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@info", false)
                 }
             };
 
             var newReport = new SqlReport
             {
-                Parameters = new List<ParamSqlReportEntry>
+                StoredProcedures = new List<StoredProcedureReport>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething3.@info", false)
+                    sp4,
+                    sp5
                 }
             };
 
@@ -374,25 +699,73 @@
             // Setup
             var comparer = new ParamReportComparer();
 
-            var masterReport = new SqlReport
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@name", false),
-                    MakeParam("DB1.dbo.LoadSomething3.@info", false)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething2")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@name", false)
+                }
+            };
+
+            var sp3 = new StoredProcedureReport("DB1", "dbo", "LoadSomething3")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@info", false)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1,
+                    sp2,
+                    sp3
+                }
+            };
+
+            var sp4 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp5 = new StoredProcedureReport("DB1", "dbo", "loadsomethinG2")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@name", false)
+                }
+            };
+
+            var sp6 = new StoredProcedureReport("DB1", "dbo", "LoadSomething3")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@info", false)
                 }
             };
 
             var newReport = new SqlReport
             {
-                Parameters = new List<ParamSqlReportEntry>
+                StoredProcedures = new List<StoredProcedureReport>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.loadsomethinG2.@name", false),
-                    MakeParam("DB1.dbo.LoadSomething3.@info", false)
+                    sp4,
+                    sp5,
+                    sp6
                 }
             };
 
@@ -413,22 +786,46 @@
             // Setup
             var comparer = new ParamReportComparer();
 
-            var masterReport = new SqlReport
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true),
-                    MakeParam("DB1.dbo.LoadSomething2.@id",false)
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething2")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1,
+                    sp2
+                }
+            };
+
+            var sp3 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
                 }
             };
 
             var newReport = new SqlReport
             {
-                Parameters = new List<ParamSqlReportEntry>
+                StoredProcedures = new List<StoredProcedureReport>
                 {
-                    MakeParam("DB1.dbo.LoadSomething1.@id", false),
-                    MakeParam("DB1.dbo.LoadSomething1.@data", true)
+                    sp3
                 }
             };
 
@@ -439,20 +836,6 @@
 
             // Assert
             Assert.That(errors.Count, Is.EqualTo(0));
-        }
-
-        private ParamSqlReportEntry MakeParam(string entry, bool isDefaulted)
-        {
-            var entryItems = entry.Split('.');
-
-            return new ParamSqlReportEntry
-            {
-                Db = entryItems[0],
-                Schema = entryItems[1],
-                SpName = entryItems[2],
-                ParameterName = entryItems[3],
-                IsDefaulted = isDefaulted
-            };
         }
     }
 }

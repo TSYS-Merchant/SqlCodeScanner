@@ -130,6 +130,55 @@ namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE dbo.[HasVariableSetters]
+        ///	@SomeName AS VARCHAR(100)
+        ///AS
+        ///
+        ///SET NOCOUNT ON;
+        ///
+        ///DECLARE @SomeVariable AS INT;
+        ///
+        ///SELECT @SomeVariable = 11;
+        ///
+        ///SELECT SomeValueabc
+        ///FROM dbo.SomeTable
+        ///WHERE TheName = @SomeName;
+        ///
+        ///GO.
+        /// </summary>
+        internal static string HasVariableSetters {
+            get {
+                return ResourceManager.GetString("HasVariableSetters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE dbo.HiddenSelectStatements
+        ///	@SomeId INT
+        ///AS
+        ///BEGIN
+        ///
+        ///	IF(@SomeId &gt;= 5)
+        ///	BEGIN
+        ///
+        ///	IF(@SomeId &lt; 100)
+        ///	BEGIN
+        ///		SELECT Value1,
+        ///		Value2
+        ///		FROM dbo.SomeTable
+        ///	END
+        ///
+        ///	END
+        ///
+        ///END.
+        /// </summary>
+        internal static string HiddenSelectStatements {
+            get {
+                return ResourceManager.GetString("HiddenSelectStatements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CREATE PROCEDURE [Schema].[NoBeginSp]
         ///	@Id AS VARCHAR(100)
         ///AS
@@ -176,20 +225,18 @@ namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         ///&lt;SqlReport&gt;
         ///  &lt;TimeStamp&gt;6/24/2019 5:44:53 PM&lt;/TimeStamp&gt;
-        ///  &lt;ParamSqlReportEntry&gt;
-        ///    &lt;Db&gt;Database1&lt;/Db&gt;
-        ///    &lt;Schema&gt;dbo&lt;/Schema&gt;
-        ///    &lt;SpName&gt;LoadUserByName&lt;/SpName&gt;
-        ///    &lt;ParameterName&gt;@UserName&lt;/ParameterName&gt;
-        ///    &lt;IsDefaulted&gt;true&lt;/IsDefaulted&gt;
-        ///  &lt;/ParamSqlReportEntry&gt;
-        ///  &lt;ReturnSqlReportEntry&gt;
-        ///    &lt;Db&gt;Database1&lt;/Db&gt;
-        ///    &lt;Schema&gt;dbo&lt;/Schema&gt;
-        ///    &lt;SpName&gt;LoadUserByName&lt;/SpName&gt;
-        ///    &lt;ReturnValueName&gt;U.UserName&lt;/ReturnValueName&gt;
-        ///  &lt;/ReturnSqlReportEntry&gt;
-        /// [rest of string was truncated]&quot;;.
+        ///    &lt;StoredProcedureReport&gt;
+        ///      &lt;Db&gt;Database1&lt;/Db&gt;
+        ///      &lt;Schema&gt;dbo&lt;/Schema&gt;
+        ///      &lt;SpName&gt;LoadUserByName&lt;/SpName&gt;
+        ///      &lt;ParamSqlReportEntry&gt;
+        ///        &lt;ParameterName&gt;@UserName&lt;/ParameterName&gt;
+        ///        &lt;IsDefaulted&gt;true&lt;/IsDefaulted&gt;
+        ///      &lt;/ParamSqlReportEntry&gt;
+        ///      &lt;ReturnSqlReportEntry&gt;
+        ///	    &lt;ReturnValueName&gt;U.UserName&lt;/ReturnValueName&gt;
+        ///    &lt;/ReturnSqlReportEntry&gt;
+        ///    &lt;/StoredProcedureReport&gt;        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string ReportSampleXml {
             get {

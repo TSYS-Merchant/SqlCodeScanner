@@ -1,11 +1,12 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp
 {
     using Microsoft.SqlServer.TransactSql.ScriptDom;
+    using ReportObjects;
 
     public class StoredProcedureParameterScanner
     {
-        public void ScanSpParameters(SqlReport sqlReport,
-            CreateProcedureStatement sp, string db, string schema)
+        public void ScanSpParameters(StoredProcedureReport spReport,
+            CreateProcedureStatement sp)
         {
 
             if (sp.Parameters.Count == 0)
@@ -15,14 +16,12 @@
 
             foreach (var p in sp.Parameters)
             {
-                var spFormattedName =
-                    sp.ProcedureReference.Name.BaseIdentifier.Value;
                 var isDefaulted = p.Value != null;
 
                 var entry =
-                    new ParamSqlReportEntry(db, schema, spFormattedName, p.VariableName.Value, isDefaulted);
+                    new ParamSqlReportEntry(p.VariableName.Value, isDefaulted);
 
-                sqlReport.Parameters.Add(entry);
+                spReport.Parameters.Add(entry);
             }
         }
     }

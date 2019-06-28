@@ -60,15 +60,16 @@
     <Compile Include="IHtmlReportGenerator.cs" />
     <Compile Include="IParamReportComparer.cs" />
     <Compile Include="IReturnReportComparer.cs" />
-    <Compile Include="ReportEntryBase.cs" />
+    <Compile Include="ReportObjects\StoredProcedureReport.cs" />
     <Compile Include="Resources\ConsoleOutput.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ConsoleOutput.resx</DependentUpon>
     </Compile>
     <Compile Include="ReturnReportComparer.cs" />
-    <Compile Include="ReturnSqlReportEntry.cs" />
+    <Compile Include="ReportObjects\ReturnSqlReportEntry.cs" />
     <Compile Include="ConsoleArguments.cs" />
+    <Compile Include="SelectElementVisitor.cs" />
     <Compile Include="StoredProcedureReturnValueScanner.cs" />
     <Compile Include="StoredProcedureParameterScanner.cs" />
     <Compile Include="Wrappers\ConsoleWrapper.cs" />
@@ -88,8 +89,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ParamReportComparer.cs" />
     <Compile Include="SqlFileScanner.cs" />
-    <Compile Include="SqlReport.cs" />
-    <Compile Include="ParamSqlReportEntry.cs" />
+    <Compile Include="ReportObjects\SqlReport.cs" />
+    <Compile Include="ReportObjects\ParamSqlReportEntry.cs" />
     <Compile Include="SqlReportConsoleManager.cs" />
     <Compile Include="SqlReportWriter.cs" />
     <Compile Include="Wrappers\IFileWrapper.cs" />
