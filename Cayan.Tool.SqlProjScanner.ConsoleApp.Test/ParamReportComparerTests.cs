@@ -57,6 +57,55 @@
         }
 
         [Test]
+        public void CompareReports_ForExistingParamDefaulted_ReturnsNoError()
+        {
+            // Setup
+            var comparer = new ParamReportComparer();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", false),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", true),
+                    new ParamSqlReportEntry("@data", true)
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            var errors = new List<string>();
+
+            // Act
+            comparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
         public void CompareReports_ForNewDefault_DoesNotReturnError()
         {
             // Setup
