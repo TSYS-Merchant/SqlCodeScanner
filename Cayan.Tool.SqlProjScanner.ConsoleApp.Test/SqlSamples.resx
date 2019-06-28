@@ -187,6 +187,43 @@ WHERE UserId = @UserId;
 
 END</value>
   </data>
+  <data name="HasVariableSetters" xml:space="preserve">
+    <value>CREATE PROCEDURE dbo.[HasVariableSetters]
+	@SomeName AS VARCHAR(100)
+AS
+
+SET NOCOUNT ON;
+
+DECLARE @SomeVariable AS INT;
+
+SELECT @SomeVariable = 11;
+
+SELECT SomeValueabc
+FROM dbo.SomeTable
+WHERE TheName = @SomeName;
+
+GO</value>
+  </data>
+  <data name="HiddenSelectStatements" xml:space="preserve">
+    <value>CREATE PROCEDURE dbo.HiddenSelectStatements
+	@SomeId INT
+AS
+BEGIN
+
+	IF(@SomeId &gt;= 5)
+	BEGIN
+
+	IF(@SomeId &lt; 100)
+	BEGIN
+		SELECT Value1,
+		Value2
+		FROM dbo.SomeTable
+	END
+
+	END
+
+END</value>
+  </data>
   <data name="NoBeginSp" xml:space="preserve">
     <value>CREATE PROCEDURE [Schema].[NoBeginSp]
 	@Id AS VARCHAR(100)
