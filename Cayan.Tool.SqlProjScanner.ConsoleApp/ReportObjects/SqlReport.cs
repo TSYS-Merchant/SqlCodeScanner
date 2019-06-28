@@ -8,16 +8,12 @@
         [XmlElement("TimeStamp")]
         public string TimeStamp { get; set; }
 
-        [XmlElement("ParamSqlReportEntry")]
-        public List<ParamSqlReportEntry> Parameters { get; set; }
-
-        [XmlElement("ReturnSqlReportEntry")]
-        public List<ReturnSqlReportEntry> ReturnValues { get; set; }
+        [XmlElement("StoredProcedureReport")]
+        public List<StoredProcedureReport> StoredProcedures { get; set; }
 
         public SqlReport()
         {
-            Parameters = new List<ParamSqlReportEntry>();
-            ReturnValues = new List<ReturnSqlReportEntry>();
+            StoredProcedures = new List<StoredProcedureReport>();
         }
 
     }

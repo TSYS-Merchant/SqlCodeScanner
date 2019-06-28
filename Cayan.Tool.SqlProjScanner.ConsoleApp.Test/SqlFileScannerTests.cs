@@ -55,8 +55,7 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.Received(4).SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<StoredProcedureReport>());
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
@@ -106,8 +105,10 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.Received(2).SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.Received(4).SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x => x.Parameters.Count == 2));
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x => x.ReturnValues.Count == 4));
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
@@ -157,8 +158,7 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<StoredProcedureReport>());
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
@@ -208,8 +208,7 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.Received(5).SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<StoredProcedureReport>());
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
@@ -255,8 +254,7 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.DidNotReceive().SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.DidNotReceive().SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.DidNotReceive().SerializeSqlReportElement(Arg.Any<StoredProcedureReport>());
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
@@ -458,11 +456,11 @@
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
 
             xmlWriter.Received(1).SerializeSqlReportElement(
-                Arg.Is<ParamSqlReportEntry>(
+                Arg.Is<StoredProcedureReport>(
                     x => x.SpName == "FindUserWithId"));
 
-            xmlWriter.Received(4).SerializeSqlReportElement(
-                Arg.Is<ReturnSqlReportEntry>(
+            xmlWriter.Received(1).SerializeSqlReportElement(
+                Arg.Is<StoredProcedureReport>(
                     x => x.SpName == "FindUserWithId"));
 
             xmlWriter.Received(1).WriteEndElement();
@@ -717,8 +715,11 @@
             Assert.That(result, Is.EqualTo(true));
 
             xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
-            xmlWriter.DidNotReceive().SerializeSqlReportElement(Arg.Any<ParamSqlReportEntry>());
-            xmlWriter.DidNotReceive().SerializeSqlReportElement(Arg.Any<ReturnSqlReportEntry>());
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x => x.Parameters.Count == 0));
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x => x.ReturnValues.Count == 0));
+            xmlWriter.Received(1).WriteEndElement();
             xmlWriter.Received(1).WriteEndElement();
             fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());

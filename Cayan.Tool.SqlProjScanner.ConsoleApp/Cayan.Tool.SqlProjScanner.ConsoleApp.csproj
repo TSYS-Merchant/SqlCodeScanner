@@ -60,7 +60,7 @@
     <Compile Include="IHtmlReportGenerator.cs" />
     <Compile Include="IParamReportComparer.cs" />
     <Compile Include="IReturnReportComparer.cs" />
-    <Compile Include="ReportObjects\ReportEntryBase.cs" />
+    <Compile Include="ReportObjects\StoredProcedureReport.cs" />
     <Compile Include="Resources\ConsoleOutput.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

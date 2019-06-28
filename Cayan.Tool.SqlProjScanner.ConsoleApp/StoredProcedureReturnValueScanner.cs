@@ -6,8 +6,8 @@
 
     public class StoredProcedureReturnValueScanner
     {
-        public void ScanReturnValues(SqlReport sqlReport,
-            CreateProcedureStatement sp, string db, string schema)
+        public void ScanReturnValues(StoredProcedureReport spReport,
+            CreateProcedureStatement sp)
         {
 
             // All statements in the .sql file
@@ -21,38 +21,32 @@
                     // Individual parts of the SP, e.g. SELECT and INSERT INTO
                     foreach (var spStatement in blockStatement.StatementList.Statements)
                     {
-                        ParseStatements(sqlReport, sp, db, schema,
-                            spText, spStatement);
+                        ParseStatements(spReport, spText, spStatement);
                     }
                 }
                 else
                 {
-                    ParseStatements(sqlReport, sp, db, schema,
-                        spText, subStatement);
+                    ParseStatements(spReport, spText, subStatement);
                 }
             }
         }
 
-        private void ParseStatements(SqlReport sqlReport,
-            CreateProcedureStatement sp, string db, string schema,
+        private void ParseStatements(StoredProcedureReport spReport,
             string spText, TSqlFragment spStatement)
         {
             if (spStatement is SelectStatement selectStatement)
             {
-                ParseSelectStatement(selectStatement, spText, sqlReport,
-                    db, schema, sp);
+                ParseSelectStatement(selectStatement, spText, spReport);
             }
 
             if (spStatement is DeleteStatement deleteStatement)
             {
-                ParseDeleteStatement(deleteStatement, spText,
-                    sqlReport, db, schema, sp);
+                ParseDeleteStatement(deleteStatement, spText, spReport);
             }
         }
 
         private void ParseDeleteStatement(DeleteStatement deleteStatement,
-            string spText, SqlReport sqlReport,
-            string db, string schema, CreateProcedureStatement sp)
+            string spText, StoredProcedureReport spReport)
         {
             if (deleteStatement.DeleteSpecification.OutputClause == null)
             {
@@ -64,14 +58,12 @@
 
             foreach (var result in selectColumns)
             {
-                ParseSelectElement(result, spText, sqlReport,
-                    db, schema, sp);
+                ParseSelectElement(result, spText, spReport);
             }
         }
 
         private void ParseSelectStatement(SelectStatement selectStatement,
-            string spText, SqlReport sqlReport,
-            string db, string schema, CreateProcedureStatement sp)
+            string spText, StoredProcedureReport sqlReport)
         {
             switch (selectStatement.QueryExpression)
             {
@@ -81,47 +73,41 @@
                     var qe2 = (QuerySpecification)binaryQueryExpression.SecondQueryExpression;
 
                     ParseQueryExpression(qe1, spText,
-                        sqlReport, db, schema, sp);
+                        sqlReport);
 
                     ParseQueryExpression(qe2, spText,
-                        sqlReport, db, schema, sp);
+                        sqlReport);
                     break;
                 }
 
                 case QuerySpecification querySpecification:
                     ParseQueryExpression(querySpecification, spText,
-                        sqlReport, db, schema, sp);
+                        sqlReport);
                     break;
             }
         }
 
         private void ParseQueryExpression(QuerySpecification qs,
-            string spText, SqlReport sqlReport,
-            string db, string schema, CreateProcedureStatement sp)
+            string spText, StoredProcedureReport spReport)
         {
             foreach (var result in qs.SelectElements)
             {
-                ParseSelectElement(result, spText, sqlReport,
-                    db, schema, sp);
+                ParseSelectElement(result, spText, spReport);
             }
         }
 
         private void ParseSelectElement(SelectElement result,
-            string spText, SqlReport sqlReport,
-            string db, string schema, CreateProcedureStatement sp)
+            string spText, StoredProcedureReport spReport)
         {
             var valueName =
                 spText.Substring(result.StartOffset, result.FragmentLength);
 
             valueName = valueName.Replace("\r", "").Replace("\n", "");
 
-            var spFormattedName =
-                sp.ProcedureReference.Name.BaseIdentifier.Value;
-
             var entry =
-                new ReturnSqlReportEntry(db, schema, spFormattedName, valueName);
+                new ReturnSqlReportEntry(valueName);
 
-            sqlReport.ReturnValues.Add(entry);
+            spReport.ReturnValues.Add(entry);
         }
 
         private string ParseSpText(TSqlStatement statement)

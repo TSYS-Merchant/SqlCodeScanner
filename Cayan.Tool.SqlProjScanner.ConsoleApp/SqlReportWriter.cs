@@ -25,14 +25,9 @@
                 writer.WriteStartElement("SqlReport");
                 writer.WriteElementString("TimeStamp", $"{DateTime.Now}");
 
-                foreach (var param in masterReport.Parameters)
+                foreach (var sp in masterReport.StoredProcedures)
                 {
-                    writer.SerializeSqlReportElement(param);
-                }
-
-                foreach (var returnValue in masterReport.ReturnValues)
-                {
-                    writer.SerializeSqlReportElement(returnValue);
+                    writer.SerializeSqlReportElement(sp);
                 }
 
                 writer.WriteEndElement();

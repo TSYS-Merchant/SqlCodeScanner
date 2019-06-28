@@ -49,20 +49,12 @@
             _xmlWriter.Flush();
         }
 
-        public void SerializeSqlReportElement(ParamSqlReportEntry entry)
+        public void SerializeSqlReportElement(StoredProcedureReport entry)
         {
             var paramSerializer =
-                new XmlSerializer(typeof(ParamSqlReportEntry));
+                new XmlSerializer(typeof(StoredProcedureReport));
 
             paramSerializer.Serialize(_xmlWriter, entry, _ns);
-        }
-
-        public void SerializeSqlReportElement(ReturnSqlReportEntry entry)
-        {
-            var returnSerializer =
-                new XmlSerializer(typeof(ReturnSqlReportEntry));
-
-            returnSerializer.Serialize(_xmlWriter, entry, _ns);
         }
     }
 }

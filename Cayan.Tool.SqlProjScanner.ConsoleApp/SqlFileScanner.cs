@@ -157,11 +157,17 @@
                         continue;
                     }
 
-                    parameterScanner.ScanSpParameters(
-                        _sqlReport, sp, db, schema);
+                    var spFormattedName =
+                        sp.ProcedureReference.Name.BaseIdentifier.Value;
 
-                    returnValueScanner.ScanReturnValues(
-                        _sqlReport, sp, db, schema);
+                    var spReport =
+                        new StoredProcedureReport(db, schema, spFormattedName);
+
+                    parameterScanner.ScanSpParameters(spReport, sp);
+
+                    returnValueScanner.ScanReturnValues(spReport, sp);
+
+                    _sqlReport.StoredProcedures.Add(spReport);
                 }
             }
         }

@@ -13,8 +13,6 @@
 
         void Flush();
 
-        void SerializeSqlReportElement(ParamSqlReportEntry entry);
-
-        void SerializeSqlReportElement(ReturnSqlReportEntry entry);
+        void SerializeSqlReportElement(StoredProcedureReport entry);
     }
 }

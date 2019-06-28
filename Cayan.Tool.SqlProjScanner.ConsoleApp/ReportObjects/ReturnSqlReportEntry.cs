@@ -1,19 +1,16 @@
 ﻿namespace Cayan.Tool.SqlProjScanner.ConsoleApp.ReportObjects
 {
-    public class ReturnSqlReportEntry : ReportEntryBase
+    public class ReturnSqlReportEntry
     {
        public string ReturnValueName { get; set; }
-
-       public string ReturnValueNameId => $"{Db}\\{Schema}\\{SpName}\\{ReturnValueName}";
 
        public ReturnSqlReportEntry()
        {
 
        }
 
-        public ReturnSqlReportEntry(string db, string schema, string spName, string returnValueName)
-           : base(db, schema, spName)
-       {
+        public ReturnSqlReportEntry(string returnValueName)
+        {
            ReturnValueName = returnValueName;
        }
     }

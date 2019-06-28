@@ -222,19 +222,18 @@ GO</value>
     <value>&lt;?xml version="1.0" encoding="utf-8"?&gt;
 &lt;SqlReport&gt;
   &lt;TimeStamp&gt;6/24/2019 5:44:53 PM&lt;/TimeStamp&gt;
-  &lt;ParamSqlReportEntry&gt;
-    &lt;Db&gt;Database1&lt;/Db&gt;
-    &lt;Schema&gt;dbo&lt;/Schema&gt;
-    &lt;SpName&gt;LoadUserByName&lt;/SpName&gt;
-    &lt;ParameterName&gt;@UserName&lt;/ParameterName&gt;
-    &lt;IsDefaulted&gt;true&lt;/IsDefaulted&gt;
-  &lt;/ParamSqlReportEntry&gt;
-  &lt;ReturnSqlReportEntry&gt;
-    &lt;Db&gt;Database1&lt;/Db&gt;
-    &lt;Schema&gt;dbo&lt;/Schema&gt;
-    &lt;SpName&gt;LoadUserByName&lt;/SpName&gt;
-    &lt;ReturnValueName&gt;U.UserName&lt;/ReturnValueName&gt;
-  &lt;/ReturnSqlReportEntry&gt;
+    &lt;StoredProcedureReport&gt;
+      &lt;Db&gt;Database1&lt;/Db&gt;
+      &lt;Schema&gt;dbo&lt;/Schema&gt;
+      &lt;SpName&gt;LoadUserByName&lt;/SpName&gt;
+      &lt;ParamSqlReportEntry&gt;
+        &lt;ParameterName&gt;@UserName&lt;/ParameterName&gt;
+        &lt;IsDefaulted&gt;true&lt;/IsDefaulted&gt;
+      &lt;/ParamSqlReportEntry&gt;
+      &lt;ReturnSqlReportEntry&gt;
+	    &lt;ReturnValueName&gt;U.UserName&lt;/ReturnValueName&gt;
+    &lt;/ReturnSqlReportEntry&gt;
+    &lt;/StoredProcedureReport&gt;
 &lt;/SqlReport&gt;</value>
   </data>
   <data name="RetrieveOneUseCoupon" xml:space="preserve">

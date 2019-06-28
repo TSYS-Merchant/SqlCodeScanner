@@ -8,134 +8,82 @@
 
     public class ParamReportComparer : IParamReportComparer
     {
-        private List<string> _existingSps;
-        private List<string> _newSps;
 
         public void CompareReports(SqlReport masterReport, SqlReport newReport, List<string> errors)
         {
-            Init(masterReport, newReport);
 
-            // Master Comparison
-            CheckForRemovedParameters(masterReport, newReport, errors);
-  
-            // New Param Check
-            CheckForNewNonDefaultedParameters(masterReport, newReport, errors);
-
-            // Arity check
-            CheckParameterOrder(masterReport, newReport, errors);
-
-            // Check for renamed SP
-            CheckForRename(errors);
-        }
-
-        private void Init(SqlReport masterReport, SqlReport newReport)
-        {
-            _existingSps = new List<string>();
-            _newSps = new List<string>();
-
-            foreach (var sp in masterReport.Parameters)
+            Parallel.ForEach(masterReport.StoredProcedures, (masterSp) =>
             {
-                if (!_existingSps.Contains(sp.SpUniqueName))
-                {
-                    _existingSps.Add(sp.SpUniqueName);
-                }
-            }
+                var newSp =
+                    newReport.StoredProcedures.FirstOrDefault(
+                        x => x.SpUniqueName == masterSp.SpUniqueName);
 
-            foreach (var sp in newReport.Parameters)
-            {
-                if (!_newSps.Contains(sp.SpUniqueName))
+                if (newSp == null)
                 {
-                    _newSps.Add(sp.SpUniqueName);
+                    return;
                 }
-            }
-        }
 
-        private void CheckForRemovedParameters(SqlReport masterReport, SqlReport newReport, List<string> errors)
-        {
-            Parallel.ForEach(masterReport.Parameters, (param) =>
-            {
-                var newParam =
-                    newReport.Parameters.Where(
-                        x => x.ParameterId == param.ParameterId).ToList();
-
-                if (!newParam.Any() && _existingSps.Contains(param.SpUniqueName)
-                                    && _newSps.Contains(param.SpUniqueName))
-                {
-                    errors.Add($"{param.ParameterId}|existing parameter is missing from new code");
-                }
-                else if (param.IsDefaulted &&
-                         newParam.Count > 0 && !newParam[0].IsDefaulted)
-                {
-                    errors.Add($"{param.ParameterId}|parameter is defaulted in master but not in new code");
-                }
+                CheckForRemovedParameters(masterSp, newSp, errors);
+                CheckForNewNonDefaultedParameters(masterSp, newSp, errors);
+                CheckParameterOrder(masterSp, newSp, errors);
             });
+
+            CheckForRename(masterReport, newReport, errors);
         }
 
-        private void CheckForNewNonDefaultedParameters(SqlReport masterReport, SqlReport newReport, List<string> errors)
+        private void CheckForRemovedParameters(StoredProcedureReport masterSp,
+            StoredProcedureReport newSp, List<string> errors)
+        {
+            foreach (var masterParam in masterSp.Parameters)
+            {
+                var newParam = newSp.Parameters.FirstOrDefault(
+                    x => x.ParameterName == masterParam.ParameterName);
+
+                if (newParam == null)
+                {
+                    errors.Add($"{masterSp.SpUniqueName}\\{masterParam.ParameterName}|existing parameter is missing from new code");
+                }
+                else if (masterParam.IsDefaulted && !newParam.IsDefaulted)
+                {
+                    errors.Add($"{masterSp.SpUniqueName}\\{masterParam.ParameterName}|parameter is defaulted in master but not in new code");
+                }
+            }
+        }
+
+        private void CheckForNewNonDefaultedParameters(StoredProcedureReport masterSp,
+            StoredProcedureReport newSp, List<string> errors)
         {
             var newParams =
-                newReport.Parameters.Where(x => masterReport.Parameters.All(y => y.ParameterId != x.ParameterId)).ToList();
+                newSp.Parameters.Where(
+                    x => masterSp.Parameters.All(y => x.ParameterName != y.ParameterName));
 
-            if (newParams.Count == 0)
+            errors.AddRange(from newParam in newParams where !newParam.IsDefaulted select $"{newSp.SpUniqueName}\\{newParam.ParameterName}|new parameter has no default");
+        }
+
+        private void CheckParameterOrder(StoredProcedureReport masterSp,
+            StoredProcedureReport newSp, List<string> errors)
+        {
+            if (newSp.Parameters.Count < masterSp.Parameters.Count)
             {
                 return;
             }
 
-            foreach (var newParam in newParams)
-            {
-                if (!newParam.IsDefaulted && _existingSps.Contains(newParam.SpUniqueName))
-                {
-                    errors.Add($"{newParam.ParameterId}|new parameter has no default");
-                }
-            }
+            errors.AddRange(masterSp.Parameters.Where((t, i) => t.ParameterName != newSp.Parameters[i].ParameterName)
+                .Select(t => $"{masterSp.SpUniqueName}\\{t.ParameterName}|existing parameter is out of order"));
         }
 
-        private void CheckParameterOrder(SqlReport masterReport, SqlReport newReport, List<string> errors)
-        {
-            foreach (var sp in _existingSps)
-            {
-                var oldParamList =
-                    masterReport.Parameters.Where(x => x.SpUniqueName == sp).ToList();
-
-                var newParamList = 
-                    newReport.Parameters.Where(x => x.SpUniqueName == sp).ToList();
-
-                if (newParamList.Count < oldParamList.Count)
-                {
-                    continue;
-                }
-
-                for (var i = 0; i < oldParamList.Count; i++)
-                {
-                    if (oldParamList[i].ParameterId != newParamList[i].ParameterId)
-                    {
-                        errors.Add($"{oldParamList[i].ParameterId}|existing parameter is out of order");
-                    }
-                }
-            }
-        }
-
-        private void CheckForRename(List<string> errors)
+        private void CheckForRename(SqlReport masterReport,
+            SqlReport newReport, List<string> errors)
         {
             var spsNotInMaster =
-                _existingSps.Where(
-                    oldSp => _newSps.All(newSp => oldSp != newSp));
+                newReport.StoredProcedures.Where(
+                    x => masterReport.StoredProcedures.All(y => x.SpUniqueName != y.SpUniqueName));
 
-            foreach (var sp in spsNotInMaster)
-            {
-                var differentCaseSp = _newSps.Where(
-                    newSp => newSp.Equals(sp, StringComparison.InvariantCultureIgnoreCase))
-                    .ToArray();
-
-                if (!differentCaseSp.Any())
-                {
-                    continue;
-                }
-
-                var shortSpName = differentCaseSp[0].Split('\\')[2];
-
-                errors.Add($"{sp}:{shortSpName}\\|sp was renamed with different case");
-            }
+            errors.AddRange(from sp in spsNotInMaster
+                let differentCaseSp = masterReport.StoredProcedures.Where(y => sp.SpUniqueName.Equals(y.SpUniqueName, StringComparison.InvariantCultureIgnoreCase))
+                    .ToList()
+                where differentCaseSp.Any()
+                select $"{differentCaseSp[0].SpUniqueName}:{sp.SpName}\\|sp was renamed with different case");
         }
     }
 }
