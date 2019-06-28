@@ -60,6 +60,7 @@
     <Compile Include="IHtmlReportGenerator.cs" />
     <Compile Include="IParamReportComparer.cs" />
     <Compile Include="IReturnReportComparer.cs" />
+    <Compile Include="QueryExpressionVisitor.cs" />
     <Compile Include="ReportObjects\StoredProcedureReport.cs" />
     <Compile Include="Resources\ConsoleOutput.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -69,6 +70,7 @@
     <Compile Include="ReturnReportComparer.cs" />
     <Compile Include="ReportObjects\ReturnSqlReportEntry.cs" />
     <Compile Include="ConsoleArguments.cs" />
+    <Compile Include="SelectAndDeleteVisitor.cs" />
     <Compile Include="StoredProcedureReturnValueScanner.cs" />
     <Compile Include="StoredProcedureParameterScanner.cs" />
     <Compile Include="Wrappers\ConsoleWrapper.cs" />

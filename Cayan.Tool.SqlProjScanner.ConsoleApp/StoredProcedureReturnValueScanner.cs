@@ -9,39 +9,28 @@
         public void ScanReturnValues(StoredProcedureReport spReport,
             CreateProcedureStatement sp)
         {
+            var spVisitor = new SelectAndDeleteVisitor();
+            var spText = ParseSpText(sp);
 
-            // All statements in the .sql file
-            foreach (var subStatement in sp.StatementList.Statements)
+            sp.Accept(spVisitor);
+
+            foreach (var statement in spVisitor.SelectAndDeleteStatements)
             {
-                var spText = ParseSpText(subStatement);
-
-                // The create SP statement is always a block statement
-                if (subStatement is BeginEndBlockStatement blockStatement)
-                {
-                    // Individual parts of the SP, e.g. SELECT and INSERT INTO
-                    foreach (var spStatement in blockStatement.StatementList.Statements)
-                    {
-                        ParseStatements(spReport, spText, spStatement);
-                    }
-                }
-                else
-                {
-                    ParseStatements(spReport, spText, subStatement);
-                }
+                ParseStatements(spReport, spText, statement);
             }
         }
 
         private void ParseStatements(StoredProcedureReport spReport,
             string spText, TSqlFragment spStatement)
         {
-            if (spStatement is SelectStatement selectStatement)
+            switch (spStatement)
             {
-                ParseSelectStatement(selectStatement, spText, spReport);
-            }
-
-            if (spStatement is DeleteStatement deleteStatement)
-            {
-                ParseDeleteStatement(deleteStatement, spText, spReport);
+                case SelectStatement selectStatement:
+                    ParseSelectStatement(selectStatement.QueryExpression, spText, spReport);
+                    break;
+                case DeleteStatement deleteStatement:
+                    ParseDeleteStatement(deleteStatement, spText, spReport);
+                    break;
             }
         }
 
@@ -62,28 +51,15 @@
             }
         }
 
-        private void ParseSelectStatement(SelectStatement selectStatement,
+        private void ParseSelectStatement(QueryExpression queryExpression,
             string spText, StoredProcedureReport sqlReport)
         {
-            switch (selectStatement.QueryExpression)
+            var queryVisitor = new QueryExpressionVisitor();
+            queryExpression.Accept(queryVisitor);
+
+            foreach (var querySpecification in queryVisitor.QuerySpecifications)
             {
-                case BinaryQueryExpression binaryQueryExpression:
-                {
-                    var qe1 = (QuerySpecification)binaryQueryExpression.FirstQueryExpression;
-                    var qe2 = (QuerySpecification)binaryQueryExpression.SecondQueryExpression;
-
-                    ParseQueryExpression(qe1, spText,
-                        sqlReport);
-
-                    ParseQueryExpression(qe2, spText,
-                        sqlReport);
-                    break;
-                }
-
-                case QuerySpecification querySpecification:
-                    ParseQueryExpression(querySpecification, spText,
-                        sqlReport);
-                    break;
+                ParseQueryExpression(querySpecification, spText, sqlReport);
             }
         }
 
