@@ -9,66 +9,14 @@
         public void ScanReturnValues(StoredProcedureReport spReport,
             CreateProcedureStatement sp)
         {
-            var spVisitor = new SelectAndDeleteVisitor();
+            var returnValueVisitor = new SelectElementVisitor();
             var spText = ParseSpText(sp);
 
-            sp.Accept(spVisitor);
+            sp.Accept(returnValueVisitor);
 
-            foreach (var statement in spVisitor.SelectAndDeleteStatements)
+            foreach (var returnValue in returnValueVisitor.ReturnValues)
             {
-                ParseStatements(spReport, spText, statement);
-            }
-        }
-
-        private void ParseStatements(StoredProcedureReport spReport,
-            string spText, TSqlFragment spStatement)
-        {
-            switch (spStatement)
-            {
-                case SelectStatement selectStatement:
-                    ParseSelectStatement(selectStatement.QueryExpression, spText, spReport);
-                    break;
-                case DeleteStatement deleteStatement:
-                    ParseDeleteStatement(deleteStatement, spText, spReport);
-                    break;
-            }
-        }
-
-        private void ParseDeleteStatement(DeleteStatement deleteStatement,
-            string spText, StoredProcedureReport spReport)
-        {
-            if (deleteStatement.DeleteSpecification.OutputClause == null)
-            {
-                return;
-            }
-            
-            var selectColumns =
-                deleteStatement.DeleteSpecification.OutputClause.SelectColumns;
-
-            foreach (var result in selectColumns)
-            {
-                ParseSelectElement(result, spText, spReport);
-            }
-        }
-
-        private void ParseSelectStatement(QueryExpression queryExpression,
-            string spText, StoredProcedureReport sqlReport)
-        {
-            var queryVisitor = new QueryExpressionVisitor();
-            queryExpression.Accept(queryVisitor);
-
-            foreach (var querySpecification in queryVisitor.QuerySpecifications)
-            {
-                ParseQueryExpression(querySpecification, spText, sqlReport);
-            }
-        }
-
-        private void ParseQueryExpression(QuerySpecification qs,
-            string spText, StoredProcedureReport spReport)
-        {
-            foreach (var result in qs.SelectElements)
-            {
-                ParseSelectElement(result, spText, spReport);
+                ParseSelectElement(returnValue, spText, spReport);
             }
         }
 
