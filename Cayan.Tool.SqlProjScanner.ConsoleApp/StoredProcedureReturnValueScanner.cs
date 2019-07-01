@@ -29,7 +29,8 @@
             valueName = valueName.Replace("\r", "").Replace("\n", "");
 
             // Ignore variable setters
-            if (valueName.StartsWith("@"))
+            if (valueName.StartsWith("@") &&
+                valueName.Contains("="))
             {
                 return;
             }

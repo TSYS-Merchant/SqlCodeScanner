@@ -326,5 +326,35 @@ namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test {
                 return ResourceManager.GetString("UnionSp", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE [dbo].[VariableReturns]
+        ///	@Id AS INT
+        ///AS
+        ///BEGIN
+        ///
+        ///SET NOCOUNT ON;
+        ///	
+        ///DECLARE @Variable1 AS INT;
+        ///DECLARE @Variable2 AS INT;
+        ///
+        ///SET @Variable1 = 50;
+        ///	
+        ///SELECT Param1,
+        ///	   Param2,
+        ///	   @Variable1,
+        ///	   @Variable2 = &apos;Hello&apos;,
+        ///	   Param3 = &apos;abc&apos;
+        ///FROM dbo.SomeTable1
+        ///WHERE TheId = @Id;
+        ///	
+        ///END
+        ///GO.
+        /// </summary>
+        internal static string VariableReturns {
+            get {
+                return ResourceManager.GetString("VariableReturns", resourceCulture);
+            }
+        }
     }
 }

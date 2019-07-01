@@ -338,4 +338,28 @@ SELECT TOP 1
 END
 GO</value>
   </data>
+  <data name="VariableReturns" xml:space="preserve">
+    <value>CREATE PROCEDURE [dbo].[VariableReturns]
+	@Id AS INT
+AS
+BEGIN
+
+SET NOCOUNT ON;
+	
+DECLARE @Variable1 AS INT;
+DECLARE @Variable2 AS INT;
+
+SET @Variable1 = 50;
+	
+SELECT Param1,
+	   Param2,
+	   @Variable1,
+	   @Variable2 = 'Hello',
+	   Param3 = 'abc'
+FROM dbo.SomeTable1
+WHERE TheId = @Id;
+	
+END
+GO</value>
+  </data>
 </root>

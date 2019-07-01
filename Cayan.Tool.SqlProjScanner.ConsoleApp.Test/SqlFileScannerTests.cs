@@ -62,6 +62,63 @@
         }
 
         [Test]
+        public void OrchestrateSqlReport_ForCreateMasterReportWithVariables_CreatesMasterReportWithCorrectVariables()
+        {
+            // Setup
+            var fileWrapper = Substitute.For<IFileWrapper>();
+            var xmlWriter = Substitute.For<IXmlStreamWriterWrapper>();
+            var xmlWrapper = Substitute.For<IXmlStreamWrapperFactory>();
+            var sqlDirectories = new List<IDirectoryInfoWrapper>();
+            var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
+            var paramReportComparer = Substitute.For<IParamReportComparer>();
+            var returnReportComparer = Substitute.For<IReturnReportComparer>();
+
+            xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
+
+            var sqlFileData = new List<List<List<string>>>
+            {
+                new List<List<string>>
+                {
+                    new List<string>
+                    {
+                        "VariableReturns.sql",
+                        "path\\sql\\theDB\\dbo\\Stored Procedures\\",
+                        SqlSamples.VariableReturns
+                    }
+                },
+                new List<List<string>>()
+            };
+
+            var directoryFactory =
+                SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
+
+            var scanner =
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+
+            // Act
+            var result = scanner.OrchestrateSqlReport(
+                "path\\sql", "reports\\data.xml",
+                null,
+                true);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(true));
+            xmlWriter.Received(1).WriteStartElement(Arg.Any<string>());
+
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Is<StoredProcedureReport>(
+                x =>
+                    x.ReturnValues[0].ReturnValueName == "Param1" &&
+                    x.ReturnValues[1].ReturnValueName == "Param2" &&
+                    x.ReturnValues[2].ReturnValueName == "@Variable1" &&
+                    x.ReturnValues[3].ReturnValueName == "Param3 = 'abc'"));
+
+            xmlWriter.Received(1).SerializeSqlReportElement(Arg.Any<StoredProcedureReport>());
+            xmlWriter.Received(1).WriteEndElement();
+            fileWrapper.DidNotReceive().ReadAllText("reports\\data.xml");
+            htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
+        }
+
+        [Test]
         public void OrchestrateSqlReport_ForCreateMasterReportAndHiddenSelectStatements_CreatesMasterReport()
         {
             // Setup
