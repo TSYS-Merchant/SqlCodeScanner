@@ -12,7 +12,13 @@
             ReturnValues = new List<SelectElement>();
         }
 
-        public override void Visit(SelectElement node)
+        public override void Visit(SelectScalarExpression node)
+        {
+            ReturnValues.Add(node);
+            base.Visit(node);
+        }
+
+        public override void Visit(SelectStarExpression node)
         {
             ReturnValues.Add(node);
             base.Visit(node);

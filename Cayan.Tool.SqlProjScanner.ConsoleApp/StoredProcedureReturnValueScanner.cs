@@ -28,13 +28,6 @@
 
             valueName = valueName.Replace("\r", "").Replace("\n", "");
 
-            // Ignore variable setters
-            if (valueName.StartsWith("@") &&
-                valueName.Contains("="))
-            {
-                return;
-            }
-
             var entry =
                 new ReturnSqlReportEntry(valueName);
 
