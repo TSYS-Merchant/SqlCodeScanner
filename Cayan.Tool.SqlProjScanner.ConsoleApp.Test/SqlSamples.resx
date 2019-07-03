@@ -224,6 +224,27 @@ BEGIN
 
 END</value>
   </data>
+  <data name="MultiSelectStatement" xml:space="preserve">
+    <value>CREATE PROCEDURE [dbo].[MultiSelectStatement]
+	@Id AS INT
+AS
+BEGIN
+
+	SET NOCOUNT ON;
+
+	SELECT P1,
+		   P2
+	FROM dbo.APerson
+	WHERE TheId = @Id;
+	
+	SELECT P3,
+		   P4
+	FROM dbo.APerson
+	WHERE TheId = @Id;
+
+END
+GO</value>
+  </data>
   <data name="NoBeginSp" xml:space="preserve">
     <value>CREATE PROCEDURE [Schema].[NoBeginSp]
 	@Id AS VARCHAR(100)

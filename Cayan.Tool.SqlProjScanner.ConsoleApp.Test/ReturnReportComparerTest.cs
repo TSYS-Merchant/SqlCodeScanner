@@ -19,7 +19,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -27,9 +27,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -47,7 +47,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -55,9 +55,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -89,7 +89,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -97,9 +97,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -107,9 +107,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -128,7 +128,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -136,9 +136,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -146,9 +146,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -181,7 +181,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -189,9 +189,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -209,7 +209,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -217,8 +217,8 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -251,7 +251,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -259,9 +259,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -279,7 +279,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -287,9 +287,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Id"),
-                    new ReturnSqlReportEntry("C.Name")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Id", 1),
+                    new ReturnSqlReportEntry("C.Name", 1)
                 }
             };
 
@@ -323,7 +323,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -331,9 +331,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -351,7 +351,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -359,10 +359,10 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id"),
-                    new ReturnSqlReportEntry("C.Phone")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1),
+                    new ReturnSqlReportEntry("C.Phone", 1)
                 }
             };
 
@@ -394,7 +394,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -402,9 +402,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1)
                 }
             };
 
@@ -422,7 +422,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))")
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
                 }
             };
 
@@ -430,11 +430,11 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name"),
-                    new ReturnSqlReportEntry("C.NewValue"),
-                    new ReturnSqlReportEntry("C.Id"),
-                    new ReturnSqlReportEntry("C.Phone")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.NewValue", 1),
+                    new ReturnSqlReportEntry("C.Id", 1),
+                    new ReturnSqlReportEntry("C.Phone", 1)
                 }
             };
 
@@ -466,7 +466,7 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("*")
+                    new ReturnSqlReportEntry("*", 1)
                 }
             };
 
@@ -482,9 +482,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("Param1"),
-                    new ReturnSqlReportEntry("Param2"),
-                    new ReturnSqlReportEntry("Param3")
+                    new ReturnSqlReportEntry("Param1", 1),
+                    new ReturnSqlReportEntry("Param2", 1),
+                    new ReturnSqlReportEntry("Param3", 1)
                 }
             };
 
@@ -516,8 +516,8 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("A.Name1"),
-                    new ReturnSqlReportEntry("A.Name2")
+                    new ReturnSqlReportEntry("A.Name1", 1),
+                    new ReturnSqlReportEntry("A.Name2", 1)
                 }
             };
 

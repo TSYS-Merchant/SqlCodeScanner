@@ -179,6 +179,33 @@ namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE [dbo].[MultiSelectStatement]
+        ///	@Id AS INT
+        ///AS
+        ///BEGIN
+        ///
+        ///	SET NOCOUNT ON;
+        ///
+        ///	SELECT P1,
+        ///		   P2
+        ///	FROM dbo.APerson
+        ///	WHERE TheId = @Id;
+        ///	
+        ///	SELECT P3,
+        ///		   P4
+        ///	FROM dbo.APerson
+        ///	WHERE TheId = @Id;
+        ///
+        ///END
+        ///GO.
+        /// </summary>
+        internal static string MultiSelectStatement {
+            get {
+                return ResourceManager.GetString("MultiSelectStatement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CREATE PROCEDURE [Schema].[NoBeginSp]
         ///	@Id AS VARCHAR(100)
         ///AS

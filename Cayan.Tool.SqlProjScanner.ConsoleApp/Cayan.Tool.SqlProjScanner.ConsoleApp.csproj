@@ -96,6 +96,7 @@
     <Compile Include="Wrappers\IFileWrapper.cs" />
     <Compile Include="Wrappers\IXmlStreamWriterWrapper.cs" />
     <Compile Include="Wrappers\IXmlStreamWrapperFactory.cs" />
+    <Compile Include="Wrappers\SelectElementWrapper.cs" />
     <Compile Include="Wrappers\XmlStreamWriterWrapper.cs" />
     <Compile Include="Wrappers\XmlStreamWrapperFactory.cs" />
   </ItemGroup>

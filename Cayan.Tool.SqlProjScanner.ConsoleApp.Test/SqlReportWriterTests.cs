@@ -31,7 +31,7 @@
                 },
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("P.Name"),
+                    new ReturnSqlReportEntry("P.Name", 1),
                 }
             };
 

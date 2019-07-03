@@ -3,6 +3,7 @@
     using ReportObjects;
     using System.Text;
     using Microsoft.SqlServer.TransactSql.ScriptDom;
+    using Wrappers;
 
     public class StoredProcedureReturnValueScanner
     {
@@ -20,16 +21,17 @@
             }
         }
 
-        private void ParseSelectElement(SelectElement result,
+        private void ParseSelectElement(SelectElementWrapper result,
             string spText, StoredProcedureReport spReport)
         {
             var valueName =
-                spText.Substring(result.StartOffset, result.FragmentLength);
+                spText.Substring(result.SelectElementHolder.StartOffset,
+                    result.SelectElementHolder.FragmentLength);
 
             valueName = valueName.Replace("\r", "").Replace("\n", "");
 
             var entry =
-                new ReturnSqlReportEntry(valueName);
+                new ReturnSqlReportEntry(valueName, result.QueryExpressionId);
 
             spReport.ReturnValues.Add(entry);
         }
