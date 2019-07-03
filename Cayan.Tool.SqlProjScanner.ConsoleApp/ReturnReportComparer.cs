@@ -45,13 +45,34 @@
         private void CheckReturnValueOrder(StoredProcedureReport masterSp,
             StoredProcedureReport newSp, List<string> errors)
         {
-            if (newSp.ReturnValues.Count < masterSp.ReturnValues.Count)
-            {
-                return;
-            }
+            var uniqueStatements = 
+                masterSp.ReturnValues.Select(x => x.StatementId)
+                    .Distinct()
+                    .ToList();
 
-            errors.AddRange(masterSp.ReturnValues.Where((t, i) => t.ReturnValueName != newSp.ReturnValues[i].ReturnValueName)
-                .Select(t => $"{masterSp.SpUniqueName}\\{t.ReturnValueName}|existing return value is out of order"));
+            foreach(var statementId in uniqueStatements)
+            {
+                var masterReturns =
+                    masterSp.ReturnValues.Where(x => x.StatementId == statementId)
+                        .ToList();
+
+                var newReturns =
+                    newSp.ReturnValues.Where(x => x.StatementId == statementId)
+                        .ToList();
+
+                if (newReturns.Count < masterReturns.Count)
+                {
+                    return;
+                }
+
+                for (var i = 0; i < masterReturns.Count; i++)
+                {
+                    if (newReturns[i].ReturnValueName != masterReturns[i].ReturnValueName)
+                    {
+                        errors.Add($"{masterSp.SpUniqueName}\\{masterSp.ReturnValues[i].ReturnValueName}|existing return value is out of order");
+                    }
+                }
+            }
         }
     }
 }

@@ -383,6 +383,64 @@
         }
 
         [Test]
+        public void CompareReports_ForMultipleSelectsWithNewValuesAtEnd_ReturnsNoErrors()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1),
+                    new ReturnSqlReportEntry("C.SomeAmountExt", 2),
+                    new ReturnSqlReportEntry("C.NameExt", 2),
+                    new ReturnSqlReportEntry("C.IdExt", 2)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.SomeAmount", 1),
+                    new ReturnSqlReportEntry("C.Name", 1),
+                    new ReturnSqlReportEntry("C.Id", 1),
+                    new ReturnSqlReportEntry("C.SomethingElse", 1),
+                    new ReturnSqlReportEntry("C.SomeAmountExt", 2),
+                    new ReturnSqlReportEntry("C.NameExt", 2),
+                    new ReturnSqlReportEntry("C.IdExt", 2),
+                    new ReturnSqlReportEntry("C.SomethingElseExt", 2)
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
         public void CompareReports_ForNewValueInMiddle_ReturnsError()
         {
             // Setup
