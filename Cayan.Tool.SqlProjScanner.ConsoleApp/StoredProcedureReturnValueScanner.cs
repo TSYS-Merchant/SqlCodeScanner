@@ -30,8 +30,11 @@
 
             valueName =
                 valueName
+                    .Replace(" \r", "")
                     .Replace("\r", "")
+                    .Replace(" \n", "")
                     .Replace("\n", "")
+                    .Replace(" \t", "")
                     .Replace("\t", "");
 
             var entry =
