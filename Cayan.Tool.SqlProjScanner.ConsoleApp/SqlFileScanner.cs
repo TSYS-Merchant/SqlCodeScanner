@@ -5,6 +5,7 @@
     using System;
     using System.Configuration;
     using System.IO;
+    using System.Linq;
     using System.Collections.Generic;
     using Wrappers;
 
@@ -125,12 +126,26 @@
             
             var sqlParser = new TSql120Parser(false);
 
-            var result =
+            var parsedSql =
                 sqlParser.Parse(new StringReader(sql), out var parseErrors);
 
             if (parseErrors.Count != 0)
             {
                 throw new Exception($"Error parsing SQL file {spFile.FullName}");
+            }
+
+            var nonCommentTokens =
+                parsedSql.ScriptTokenStream
+                    .Where(x => x.TokenType != TSqlTokenType.MultilineComment)
+                    .Where(x => x.TokenType != TSqlTokenType.SingleLineComment)
+                    .Select(x => x.Text);
+
+            var result =
+                sqlParser.Parse(new StringReader(string.Join("", nonCommentTokens)), out var parseErrors2);
+
+            if (parseErrors2.Count != 0)
+            {
+                throw new Exception($"Error parsing SQL with comments removed {spFile.FullName}");
             }
 
             return result as TSqlScript;
