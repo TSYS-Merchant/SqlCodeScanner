@@ -28,7 +28,14 @@
                 spText.Substring(result.SelectElementHolder.StartOffset,
                     result.SelectElementHolder.FragmentLength);
 
-            valueName = valueName.Replace("\r", "").Replace("\n", "");
+            valueName =
+                valueName
+                    .Replace(" \r", "")
+                    .Replace("\r", "")
+                    .Replace(" \n", "")
+                    .Replace("\n", "")
+                    .Replace(" \t", "")
+                    .Replace("\t", "");
 
             var entry =
                 new ReturnSqlReportEntry(valueName, result.QueryExpressionId);
