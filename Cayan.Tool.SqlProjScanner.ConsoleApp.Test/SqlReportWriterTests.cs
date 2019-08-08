@@ -27,7 +27,7 @@
                 SpName = "SomeSp1",
                 Parameters = new List<ParamSqlReportEntry>()
                 {
-                    new ParamSqlReportEntry("@Id", false)
+                    new ParamSqlReportEntry("@Id", "INT", false)
                 },
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {

@@ -19,7 +19,9 @@
                 var isDefaulted = p.Value != null;
 
                 var entry =
-                    new ParamSqlReportEntry(p.VariableName.Value, isDefaulted);
+                    new ParamSqlReportEntry(p.VariableName.Value,
+                        p.DataType.Name.BaseIdentifier.Value,
+                        isDefaulted);
 
                 spReport.Parameters.Add(entry);
             }
