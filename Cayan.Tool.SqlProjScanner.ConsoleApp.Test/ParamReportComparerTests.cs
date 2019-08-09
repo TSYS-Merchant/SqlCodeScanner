@@ -575,6 +575,56 @@
         }
 
         [Test]
+        public void CompareReports_ForBigIntToTinyInt_ReturnsError()
+        {
+            // Setup
+            var comparer = new ParamReportComparer();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", "BIGINT", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "LoadSomething1")
+            {
+                Parameters = new List<ParamSqlReportEntry>
+                {
+                    new ParamSqlReportEntry("@id", "TINYINT", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            var errors = new List<string>();
+
+            // Act
+            comparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\LoadSomething1\\@id|existing BIGINT parameter was changed to TINYINT"));
+        }
+
+        [Test]
         public void CompareReports_ForIntToBigInt_DoesNotReturnError()
         {
             // Setup
