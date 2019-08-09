@@ -77,13 +77,13 @@
             StoredProcedureReport newSp, List<string> errors)
         {
             var masterBigIntParameters = masterSp.Parameters
-                .Where(x => x.ParameterType == "BIGINT");
+                .Where(x => x.ParameterType.ToUpper() == "BIGINT");
 
             var newShrunkParameters =
                 from newParam in newSp.Parameters
                 join oldParam in masterBigIntParameters
                     on newParam.ParameterName equals oldParam.ParameterName
-                where newParam.ParameterType != "BIGINT"
+                where newParam.ParameterType.ToUpper() != "BIGINT"
                 select newParam;
 
             errors.AddRange(newShrunkParameters.Select(shrunkParameter => $"{masterSp.SpUniqueName}\\{shrunkParameter.ParameterName}|existing BIGINT parameter was changed to {shrunkParameter.ParameterType}"));
