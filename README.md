@@ -25,7 +25,7 @@ Stored Procedure Parameters:
 4.	Existing stored procedures cannot be renamed the same name with different case.
 
 TODO
-Check return types of stored parameters
+Check return types of stored parameters. Currently only BIGINT change is checked.
 
 Stored Procedure Return Values:
 1.	Return values cannot be removed from existing stored procedures. 

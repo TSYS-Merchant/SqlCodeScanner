@@ -26,6 +26,7 @@
                 CheckForRemovedParameters(masterSp, newSp, errors);
                 CheckForNewNonDefaultedParameters(masterSp, newSp, errors);
                 CheckParameterOrder(masterSp, newSp, errors);
+                CheckParameterType(masterSp, newSp, errors);
             });
 
             CheckForRename(masterReport, newReport, errors);
@@ -70,6 +71,22 @@
 
             errors.AddRange(masterSp.Parameters.Where((t, i) => t.ParameterName != newSp.Parameters[i].ParameterName)
                 .Select(t => $"{masterSp.SpUniqueName}\\{t.ParameterName}|existing parameter is out of order"));
+        }
+
+        private void CheckParameterType(StoredProcedureReport masterSp,
+            StoredProcedureReport newSp, List<string> errors)
+        {
+            var masterBigIntParameters = masterSp.Parameters
+                .Where(x => x.ParameterType.ToUpper() == "BIGINT");
+
+            var newShrunkParameters =
+                from newParam in newSp.Parameters
+                join oldParam in masterBigIntParameters
+                    on newParam.ParameterName equals oldParam.ParameterName
+                where newParam.ParameterType.ToUpper() != "BIGINT"
+                select newParam;
+
+            errors.AddRange(newShrunkParameters.Select(shrunkParameter => $"{masterSp.SpUniqueName}\\{shrunkParameter.ParameterName}|existing BIGINT parameter was changed to {shrunkParameter.ParameterType}"));
         }
 
         private void CheckForRename(SqlReport masterReport,

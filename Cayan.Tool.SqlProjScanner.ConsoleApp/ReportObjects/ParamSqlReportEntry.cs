@@ -5,6 +5,8 @@
 
         public string ParameterName { get; set; }
 
+        public string ParameterType { get; set; }
+
         public bool IsDefaulted { get; set; }
 
         public ParamSqlReportEntry()
@@ -12,9 +14,11 @@
 
         }
 
-        public ParamSqlReportEntry(string parameterName, bool isDefaulted)
+        public ParamSqlReportEntry(string parameterName,
+            string parameterType, bool isDefaulted)
         {
             ParameterName = parameterName;
+            ParameterType = parameterType;
             IsDefaulted = isDefaulted;
         }
     }
