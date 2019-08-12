@@ -17,8 +17,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -34,8 +34,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -66,8 +66,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -83,8 +83,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", true),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", true),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -115,8 +115,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -132,9 +132,9 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true),
-                    new ParamSqlReportEntry("@username", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true),
+                    new ParamSqlReportEntry("@username", "VARCHAR", "200", true)
                 }
             };
 
@@ -165,8 +165,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -174,8 +174,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -192,8 +192,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -201,8 +201,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -234,8 +234,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -251,8 +251,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -260,7 +260,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false)
                 }
             };
 
@@ -293,8 +293,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -302,9 +302,9 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@name", "VARCHAR", false),
-                    new ParamSqlReportEntry("@address", "VARCHAR", true),
-                    new ParamSqlReportEntry("@phone", "VARCHAR", false)
+                    new ParamSqlReportEntry("@name", "VARCHAR", "200", false),
+                    new ParamSqlReportEntry("@address", "VARCHAR", "200", true),
+                    new ParamSqlReportEntry("@phone", "VARCHAR", "200", false)
                 }
             };
 
@@ -312,8 +312,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", true),
-                    new ParamSqlReportEntry("@style", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", true),
+                    new ParamSqlReportEntry("@style", "VARCHAR", "200", true)
                 }
             };
 
@@ -331,8 +331,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -340,9 +340,9 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@name", "VARCHAR", false),
-                    new ParamSqlReportEntry("@address", "VARCHAR", true),
-                    new ParamSqlReportEntry("@phone", "VARCHAR", false)
+                    new ParamSqlReportEntry("@name", "VARCHAR", "200", false),
+                    new ParamSqlReportEntry("@address", "VARCHAR", "200", true),
+                    new ParamSqlReportEntry("@phone", "VARCHAR", "200", false)
                 }
             };
 
@@ -350,8 +350,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", true),
-                    new ParamSqlReportEntry("@style", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", true),
+                    new ParamSqlReportEntry("@style", "VARCHAR", "200", true)
                 }
             };
 
@@ -384,8 +384,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -401,7 +401,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -433,8 +433,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -450,8 +450,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", false)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", false)
                 }
             };
 
@@ -483,8 +483,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -500,9 +500,9 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true),
-                    new ParamSqlReportEntry("@name", "VARCHAR", false)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true),
+                    new ParamSqlReportEntry("@name", "VARCHAR", "200", false)
                 }
             };
 
@@ -534,8 +534,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "BIGINT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "BIGINT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -551,8 +551,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -584,8 +584,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "bigint", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "bigint", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -601,8 +601,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -634,8 +634,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "BIGINT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "BIGINT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -651,8 +651,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "BIGINT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "BIGINT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -683,8 +683,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "bigint", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "bigint", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -700,8 +700,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "TINYINT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "TINYINT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -733,8 +733,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -750,8 +750,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "BIGINT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "BIGINT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -782,8 +782,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "BIGINT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "BIGINT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -799,7 +799,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                   new ParamSqlReportEntry("@data", "VARCHAR", true)
+                   new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -831,8 +831,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -840,9 +840,9 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@name", "VARCHAR", false),
-                    new ParamSqlReportEntry("@address", "VARCHAR", true),
-                    new ParamSqlReportEntry("@phone", "VARCHAR", false)
+                    new ParamSqlReportEntry("@name", "VARCHAR", "200", false),
+                    new ParamSqlReportEntry("@address", "VARCHAR", "200", true),
+                    new ParamSqlReportEntry("@phone", "VARCHAR", "200", false)
                 }
             };
 
@@ -850,8 +850,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", true),
-                    new ParamSqlReportEntry("@style", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", true),
+                    new ParamSqlReportEntry("@style", "VARCHAR", "200", true)
                 }
             };
 
@@ -869,8 +869,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -878,9 +878,9 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@name", "VARCHAR", false),
-                    new ParamSqlReportEntry("@phone", "VARCHAR", false),
-                    new ParamSqlReportEntry("@address", "VARCHAR", true)
+                    new ParamSqlReportEntry("@name", "VARCHAR", "200", false),
+                    new ParamSqlReportEntry("@phone", "VARCHAR", "200", false),
+                    new ParamSqlReportEntry("@address", "VARCHAR", "200", true)
                 }
             };
 
@@ -888,8 +888,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", true),
-                    new ParamSqlReportEntry("@style", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", true),
+                    new ParamSqlReportEntry("@style", "VARCHAR", "200", true)
                 }
             };
 
@@ -924,8 +924,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -933,7 +933,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@name", "VARCHAR", false)
+                    new ParamSqlReportEntry("@name", "VARCHAR", "200", false)
                 }
             };
 
@@ -941,7 +941,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@info", "VARCHAR", false)
+                    new ParamSqlReportEntry("@info", "VARCHAR", "200", false)
                 }
             };
 
@@ -959,8 +959,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -968,7 +968,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@info", "VARCHAR", false)
+                    new ParamSqlReportEntry("@info", "VARCHAR", "200", false)
                 }
             };
 
@@ -1000,8 +1000,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -1009,7 +1009,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@name", "VARCHAR", false)
+                    new ParamSqlReportEntry("@name", "VARCHAR", "200", false)
                 }
             };
 
@@ -1017,7 +1017,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@info", "VARCHAR", false)
+                    new ParamSqlReportEntry("@info", "VARCHAR", "200", false)
                 }
             };
 
@@ -1035,8 +1035,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -1044,7 +1044,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@name", "VARCHAR", false)
+                    new ParamSqlReportEntry("@name", "VARCHAR", "200", false)
                 }
             };
 
@@ -1052,7 +1052,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@info", "VARCHAR", false)
+                    new ParamSqlReportEntry("@info", "VARCHAR", "200", false)
                 }
             };
 
@@ -1087,8 +1087,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
@@ -1096,7 +1096,7 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
                 }
             };
 
@@ -1113,8 +1113,8 @@
             {
                 Parameters = new List<ParamSqlReportEntry>
                 {
-                    new ParamSqlReportEntry("@id", "INT", false),
-                    new ParamSqlReportEntry("@data", "VARCHAR", true)
+                    new ParamSqlReportEntry("@id", "INT", "N/A", false),
+                    new ParamSqlReportEntry("@data", "VARCHAR", "200", true)
                 }
             };
 
