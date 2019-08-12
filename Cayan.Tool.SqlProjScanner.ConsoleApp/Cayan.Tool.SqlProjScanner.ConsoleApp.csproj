@@ -54,6 +54,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -70,6 +71,7 @@
     <Compile Include="ReportObjects\ReturnSqlReportEntry.cs" />
     <Compile Include="ConsoleArguments.cs" />
     <Compile Include="SelectElementVisitor.cs" />
+    <Compile Include="SqlDbTypeEnumWrapper.cs" />
     <Compile Include="StoredProcedureReturnValueScanner.cs" />
     <Compile Include="StoredProcedureParameterScanner.cs" />
     <Compile Include="Wrappers\ConsoleWrapper.cs" />

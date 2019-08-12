@@ -3,6 +3,7 @@
     using ReportObjects;
     using System;
     using System.Collections.Generic;
+    using System.Data;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -77,13 +78,13 @@
             StoredProcedureReport newSp, List<string> errors)
         {
             var masterBigIntParameters = masterSp.Parameters
-                .Where(x => x.ParameterType.ToUpper() == "BIGINT");
+                .Where(x => x.ParameterType.ToUpper() == SqlDbType.BigInt.ToUpperString());
 
             var newShrunkParameters =
                 from newParam in newSp.Parameters
                 join oldParam in masterBigIntParameters
                     on newParam.ParameterName equals oldParam.ParameterName
-                where newParam.ParameterType.ToUpper() != "BIGINT"
+                where newParam.ParameterType.ToUpper() != SqlDbType.BigInt.ToUpperString()
                 select newParam;
 
             errors.AddRange(newShrunkParameters.Select(shrunkParameter => $"{masterSp.SpUniqueName}\\{shrunkParameter.ParameterName}|existing BIGINT parameter was changed to {shrunkParameter.ParameterType}"));
