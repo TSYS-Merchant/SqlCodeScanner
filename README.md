@@ -76,21 +76,210 @@ These rules are intended to enforce backwards compatibility through SP versionin
 
 Parameters shall not be removed from existing stored procedures. Instead, add a new version of the stored procedure without the previous parameter.
 
+#### Bad Removing Parameter Example
+
+```sql
+-- Before
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250),
+    @Location VARCHAR(250)
+AS
+BEGIN
+...
+ 
+-- After
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250)
+AS
+BEGIN
+...
+```
+
+#### Good Removing Parameter Example
+
+```sql
+-- Before
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250),
+    @Location VARCHAR(250)
+AS
+BEGIN
+...
+ 
+-- After
+CREATE PROCEDURE [dbo].[SomeSpV2]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250)
+AS
+BEGIN
+...
+```
+
 ### No Removing Defaults from Parameters
 
 Existing parameters with defaults shall not have those defaults removed. Instead, add a new version of the stored procedure without the default.
+
+#### Bad Removing Default Example
+
+```sql
+-- Before
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250) = 'Default description'
+AS
+BEGIN
+...
+ 
+-- After
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250)
+AS
+BEGIN
+...
+```
+
+#### Good Removing Default Example
+
+```sql
+-- Before
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250) = 'Default description'
+AS
+BEGIN
+...
+ 
+-- After
+CREATE PROCEDURE [dbo].[SomeSpV2]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250)
+AS
+BEGIN
+...
+```
 
 ### No New Parameters Without Defaults
 
 If a new parameter is added to an existing stored procedure, it shall be defaulted. NULL defaults are acceptable.
 
+#### Bad New Parameter Example
+
+```sql
+-- Before
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50)
+AS
+BEGIN
+...
+ 
+-- After
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250)
+AS
+BEGIN
+...
+```
+
+#### Good New Parameter Example
+
+```sql
+-- Before
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50)
+AS
+BEGIN
+...
+ 
+-- After
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250) = 'Default description'
+AS
+BEGIN
+...
+```
+
 ### No Changing Parameter Order
 
 Existing parameters shall not be re-ordered. They can be in a different order in new stored procedures only.
 
+
+#### Bad Reorder Example
+
+```sql
+-- Before
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250),
+    @Location VARCHAR(250)
+AS
+BEGIN
+...
+ 
+-- After
+CREATE PROCEDURE [dbo].[SomeSp]
+    @Location VARCHAR(250),
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250)
+     
+AS
+BEGIN
+...
+```
+
+
+#### Good Reorder Example
+
+```sql
+-- Before
+CREATE PROCEDURE [dbo].[SomeSp]
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250),
+    @Location VARCHAR(250)
+AS
+BEGIN
+...
+ 
+-- After
+CREATE PROCEDURE [dbo].[SomeSpV2]
+    @Location VARCHAR(250),
+    @BusinessName VARCHAR(50),
+    @Description VARCHAR(250)
+     
+AS
+BEGIN
+...
+```
+
 ### No Changing Stored Procedure Case
 
 Existing stored procedures shall not be renamed with differing case. New stored procedures should follow our naming conventions.
+
+#### Bad Renaming Example
+
+```sql
+-- Before
+LoadUserByID
+ 
+-- After
+LoadUserById
+```
+
+#### Good Renaming Example
+
+```sql
+-- Before
+LoadUserByID
+ 
+-- After
+LoadUserByID
+LoadUserByIdV2
+```
 
 ### No Removing Return Values
 
@@ -98,12 +287,148 @@ Existing stored procedures shall not have values removed from their SELECT state
 
 Note that this also prevents splitting out SELECT * statements to list the individual parameters. To replace SELECT *, create a newer version of the same stored procedure and update the code to use that version.
 
+#### Bad Remove Return Value Example
+
+```sql
+-- Before
+ 
+CREATE PROCEDURE [dbo].[SomeSpV1]
+...
+ 
+SELECT SomeId,
+       BusinessName,
+       BusinessCreateDate,
+FROM dbo.BusinessTable
+ 
+-- After
+ 
+CREATE PROCEDURE [dbo].[SomeSpV1]
+...
+ 
+SELECT SomeId,
+       BusinessCreateDate,
+FROM dbo.BusinessTable
+```
+
+#### Good Remove Return Value Example
+
+```sql
+-- Before
+ 
+CREATE PROCEDURE [dbo].[SomeSpV1]
+...
+ 
+SELECT SomeId,
+       BusinessName,
+       BusinessCreateDate,
+FROM dbo.BusinessTable
+ 
+-- After
+ 
+CREATE PROCEDURE [dbo].[SomeSpV2]
+...
+ 
+SELECT SomeId,
+       BusinessCreateDate,
+FROM dbo.BusinessTable
+```
+
 ### No Reordering Return Values
 
 Existing stored procedures shall not have the order of the values in their SELECT statements changed. When creating a new stored procedure, the return values may be in a different order.
+
+#### Bad Reorder Return Values Example
+
+```sql
+-- Before
+ 
+CREATE PROCEDURE [dbo].[SomeSpV1]
+...
+ 
+SELECT SomeId,
+       BusinessName,
+       BusinessCreateDate,
+FROM dbo.BusinessTable
+ 
+-- After
+ 
+CREATE PROCEDURE [dbo].[SomeSpV1]
+...
+ 
+SELECT BusinessName,
+       BusinessCreateDate,
+       SomeId
+FROM dbo.BusinessTable
+
+```
+
+#### Good Reorder Return Values Example
+
+```sql
+-- Before
+ 
+CREATE PROCEDURE [dbo].[SomeSpV1]
+...
+ 
+SELECT SomeId,
+       BusinessName,
+       BusinessCreateDate,
+FROM dbo.BusinessTable
+ 
+-- After
+ 
+CREATE PROCEDURE [dbo].[SomeSpV2]
+...
+ 
+SELECT BusinessName,
+       BusinessCreateDate,
+       SomeId
+FROM dbo.BusinessTable
+```
 
 ### No BIGINT Parameter Downgrades
 
 Existing stored procedures with BIGINT parameters shall not have the BIGINT type changed. Leave BIGINTS as they are.
 
 Note that different casing is allowed, for example if you want to change bigint to BIGINT.
+
+#### Bad BIGINT Example
+```sql
+-- Before
+ 
+CREATE PROCEDURE [dbo].[SomeSpV1]
+  @someId AS BIGINT
+BEGIN
+ 
+...
+ 
+-- After
+ 
+CREATE PROCEDURE [dbo].[SomeSpV1]
+  @someId AS INT
+BEGIN
+ 
+...
+```
+
+There is no good way to change a BIGINT. If creating a new version of the stored procedure make sure the BIGINT type is carried over.
+
+#### BIGINT Versioning Example
+
+```sql
+-- Before
+ 
+CREATE PROCEDURE [dbo].[SomeSpV1]
+  @someId AS BIGINT
+BEGIN
+ 
+...
+ 
+-- After
+ 
+CREATE PROCEDURE [dbo].[SomeSpV2]
+  @someId AS BIGINT
+BEGIN
+ 
+...
+```
