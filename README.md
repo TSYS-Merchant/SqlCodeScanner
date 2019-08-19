@@ -67,3 +67,43 @@ All other branches should run using the compare argument and use that master xml
 The html report should also be published for each branch so the developers can read it. If there are no errors, it will simply say “No errors found.”. If there are errors, it will list them in an html table. The table will show the following information:
 Database | SP Name | Parameter Name | Error
 These details will tell the developers what to fix.
+
+## List of Rules
+
+These rules are intended to enforce backwards compatibility through SP versioning. That is to say that, generally, new stored procedures should be created rather than old ones edited when significant changes are made.
+
+### No Removing Parameters
+
+Parameters shall not be removed from existing stored procedures. Instead, add a new version of the stored procedure without the previous parameter.
+
+### No Removing Defaults from Parameters
+
+Existing parameters with defaults shall not have those defaults removed. Instead, add a new version of the stored procedure without the default.
+
+### No New Parameters Without Defaults
+
+If a new parameter is added to an existing stored procedure, it shall be defaulted. NULL defaults are acceptable.
+
+### No Changing Parameter Order
+
+Existing parameters shall not be re-ordered. They can be in a different order in new stored procedures only.
+
+### No Changing Stored Procedure Case
+
+Existing stored procedures shall not be renamed with differing case. New stored procedures should follow our naming conventions.
+
+### No Removing Return Values
+
+Existing stored procedures shall not have values removed from their SELECT statements. When creating a new stored procedure, different return values may be used. This goes for DELETE OUTPUT statements as well.
+
+Note that this also prevents splitting out SELECT * statements to list the individual parameters. To replace SELECT *, create a newer version of the same stored procedure and update the code to use that version.
+
+### No Reordering Return Values
+
+Existing stored procedures shall not have the order of the values in their SELECT statements changed. When creating a new stored procedure, the return values may be in a different order.
+
+### No BIGINT Parameter Downgrades
+
+Existing stored procedures with BIGINT parameters shall not have the BIGINT type changed. Leave BIGINTS as they are.
+
+Note that different casing is allowed, for example if you want to change bigint to BIGINT.
