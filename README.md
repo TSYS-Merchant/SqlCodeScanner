@@ -16,21 +16,6 @@ All SqlServer projects must follow the specified folder structure:
 DatabaseName\SchemaName\Stored Procedures\
 The stored procedures must be .sql files inside of the “Stored Procedures” folder. It is possible to use a different name for the stored procedures folder by changing the “StoredProcedureDirectoryName” setting in the app.config file.
 
-## Backwards Compatibility Rules
-
-Stored Procedure Parameters:
-1.	Parameters cannot be removed from existing stored procedures. 
-2.	New parameters to existing stored procedures must be defaulted.
-3.	Parameters of existing stored procedures cannot be re-ordered.
-4.	Existing stored procedures cannot be renamed the same name with different case.
-
-TODO
-Check return types of stored parameters. Currently only BIGINT change is checked.
-
-Stored Procedure Return Values:
-1.	Return values cannot be removed from existing stored procedures. 
-2.	Return values cannot have their order changes in an existing stored procedure. New ones can be added but only at the end of the select or output statement.
-
 ## Command Line Arguments
 
 Enter no arguments, -h or -help for instructions
