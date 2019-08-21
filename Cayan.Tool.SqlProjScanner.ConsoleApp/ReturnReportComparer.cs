@@ -3,6 +3,7 @@
     using ReportObjects;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text.RegularExpressions;
     using System.Threading.Tasks;
 
     public class ReturnReportComparer : IReturnReportComparer
@@ -33,7 +34,7 @@
             foreach (var masterReturnValue in masterSp.ReturnValues)
             {
                 var newReturnValue = newSp.ReturnValues.FirstOrDefault(
-                    x => x.ReturnValueName == masterReturnValue.ReturnValueName);
+                    x => Regex.Replace(x.ReturnValueName, @"\s+", " ") == Regex.Replace(masterReturnValue.ReturnValueName, @"\s+", " "));
 
                 if (newReturnValue == null)
                 {
