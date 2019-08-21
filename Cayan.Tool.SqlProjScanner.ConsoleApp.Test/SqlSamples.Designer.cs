@@ -179,6 +179,33 @@ namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE [dbo].[LotsOfWhitespace]
+        ///	@SomeId INT,
+        ///	                       @someName VARCHAR(100),
+        ///						   
+        ///				
+        ///			
+        ///			@someDate DATETIME
+        ///AS
+        ///
+        ///BEGIN
+        ///
+        ///	SELECT      &apos;Hello&apos;        AS SomeName
+        ///	, &apos;Word555&apos;  
+        ///	
+        ///	 
+        ///	  
+        ///	   AS SomeWord
+        ///
+        ///END.
+        /// </summary>
+        internal static string LotsOfWhitespace {
+            get {
+                return ResourceManager.GetString("LotsOfWhitespace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CREATE PROCEDURE [dbo].[MultiSelectStatement]
         ///	@Id AS INT
         ///AS
