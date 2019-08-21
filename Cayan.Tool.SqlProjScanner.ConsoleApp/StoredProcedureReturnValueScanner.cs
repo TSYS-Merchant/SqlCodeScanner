@@ -2,6 +2,7 @@
 {
     using ReportObjects;
     using System.Text;
+    using System.Text.RegularExpressions;
     using Microsoft.SqlServer.TransactSql.ScriptDom;
     using Wrappers;
 
@@ -30,12 +31,12 @@
 
             valueName =
                 valueName
-                    .Replace(" \r", "")
-                    .Replace("\r", "")
-                    .Replace(" \n", "")
-                    .Replace("\n", "")
-                    .Replace(" \t", "")
-                    .Replace("\t", "");
+                    .Replace("\r", " ")
+                    .Replace("\n", " ")
+                    .Replace("\t", " ");
+
+            valueName =
+                Regex.Replace(valueName, @"\s+", " ");
 
             var entry =
                 new ReturnSqlReportEntry(valueName, result.QueryExpressionId);

@@ -224,6 +224,27 @@ BEGIN
 
 END</value>
   </data>
+  <data name="LotsOfWhitespace" xml:space="preserve">
+    <value>CREATE PROCEDURE [dbo].[LotsOfWhitespace]
+	@SomeId INT,
+	                       @someName VARCHAR(100),
+						   
+				
+			
+			@someDate DATETIME
+AS
+
+BEGIN
+
+	SELECT      'Hello'        AS SomeName
+	, 'Word555'  
+	
+	 
+	  
+	   AS SomeWord
+
+END</value>
+  </data>
   <data name="MultiSelectStatement" xml:space="preserve">
     <value>CREATE PROCEDURE [dbo].[MultiSelectStatement]
 	@Id AS INT
