@@ -100,6 +100,13 @@
             if (paramName == NaPlaceholder)
             {
                 var spNames = dbInfo[2].Split(':');
+
+                if (spNames.Length < 2)
+                {
+                    sb.Append($"<td>{dbInfo[1]}.{dbInfo[2]}</td>");
+                    return;
+                }
+
                 var oldName = spNames[0];
                 var newName = spNames[1];
                 var formattedNewName = "";

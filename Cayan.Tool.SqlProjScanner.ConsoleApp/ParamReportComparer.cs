@@ -31,6 +31,7 @@
             });
 
             CheckForRename(masterReport, newReport, errors);
+            CheckForDuplicate(newReport, errors);
         }
 
         private void CheckForRemovedParameters(StoredProcedureReport masterSp,
@@ -102,6 +103,20 @@
                     .ToList()
                 where differentCaseSp.Any()
                 select $"{differentCaseSp[0].SpUniqueName}:{sp.SpName}\\|sp was renamed with different case");
+        }
+
+        private void CheckForDuplicate(SqlReport newReport, List<string> errors)
+        {
+            var duplicates =
+                newReport.StoredProcedures.GroupBy(x => x.SpUniqueName)
+                    .Where(g => g.Count() > 1)
+                    .Select(y => new { UniqueName = y.Key, Counter = y.Count()})
+                    .ToList();
+
+            foreach (var duplicate in duplicates)
+            {
+                errors.Add($"{duplicate.UniqueName}\\|sp defined {duplicate.Counter} times");
+            }
         }
     }
 }
