@@ -108,14 +108,14 @@
         private void CheckForDuplicate(SqlReport newReport, List<string> errors)
         {
             var duplicates =
-                newReport.StoredProcedures.GroupBy(x => x.SpUniqueName)
-                    .Where(g => g.Count() > 1)
-                    .Select(y => new { UniqueName = y.Key, Counter = y.Count()})
+                newReport.StoredProcedures.GroupBy(sp => sp.SpUniqueName)
+                    .Where(spGroup => spGroup.Count() > 1)
+                    .Select(dupeSps => new { UniqueName = dupeSps.Key, Count = dupeSps.Count()})
                     .ToList();
 
             foreach (var duplicate in duplicates)
             {
-                errors.Add($"{duplicate.UniqueName}\\|sp defined {duplicate.Counter} times");
+                errors.Add($"{duplicate.UniqueName}\\|sp defined {duplicate.Count} times");
             }
         }
     }
