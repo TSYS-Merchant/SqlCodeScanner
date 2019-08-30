@@ -25,6 +25,8 @@
         private void ParseSelectElement(SelectElementWrapper result,
             string spText, StoredProcedureReport spReport)
         {
+            var isLiteral = CheckIfLiteral(result);
+
             var valueName =
                 spText.Substring(result.SelectElementHolder.StartOffset,
                     result.SelectElementHolder.FragmentLength);
@@ -39,7 +41,8 @@
                 Regex.Replace(valueName, @"\s+", " ");
 
             var entry =
-                new ReturnSqlReportEntry(valueName, result.QueryExpressionId);
+                new ReturnSqlReportEntry(valueName, result.QueryExpressionId,
+                    isLiteral);
 
             spReport.ReturnValues.Add(entry);
         }
@@ -54,6 +57,16 @@
             }
 
             return queryTextSb.ToString();
+        }
+
+        private bool CheckIfLiteral(SelectElementWrapper result)
+        {
+            if (!(result.SelectElementHolder is SelectScalarExpression scalarExpression))
+            {
+                return false;
+            }
+
+            return scalarExpression.Expression is Literal;
         }
     }
 }

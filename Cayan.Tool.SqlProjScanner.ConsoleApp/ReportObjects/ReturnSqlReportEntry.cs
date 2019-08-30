@@ -6,16 +6,19 @@
 
        public int StatementId { get; set; }
 
+       public bool IsLiteral { get; set; }
+
        public ReturnSqlReportEntry()
        {
 
        }
 
         public ReturnSqlReportEntry(string returnValueName,
-            int statementId)
+            int statementId, bool isLiteral)
         {
            ReturnValueName = returnValueName;
            StatementId = statementId;
+           IsLiteral = isLiteral;
         }
     }
 }
