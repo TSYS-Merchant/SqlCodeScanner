@@ -431,3 +431,7 @@ BEGIN
  
 ...
 ```
+
+### No Duplicate Stored Procedures
+
+A stored procedure shall not be defined more than once.
