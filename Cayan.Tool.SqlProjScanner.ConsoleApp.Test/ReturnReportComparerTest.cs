@@ -27,9 +27,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -55,9 +55,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -97,9 +97,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -107,9 +107,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Name")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -136,9 +136,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -146,9 +146,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -189,9 +189,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -217,8 +217,8 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -259,9 +259,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -287,9 +287,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, "")
                 }
             };
 
@@ -331,9 +331,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -359,10 +359,10 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id"),
-                    new ReturnSqlReportEntry("C.Phone", 1, false, "Phone")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Phone", 1, false, "")
                 }
             };
 
@@ -393,12 +393,12 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id"),
-                    new ReturnSqlReportEntry("C.SomeAmountExt", 2, false, "SomeAmountExt"),
-                    new ReturnSqlReportEntry("C.NameExt", 2, false, "NameExt"),
-                    new ReturnSqlReportEntry("C.IdExt", 2, false, "IdExt")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.SomeAmountExt", 2, false, ""),
+                    new ReturnSqlReportEntry("C.NameExt", 2, false, ""),
+                    new ReturnSqlReportEntry("C.IdExt", 2, false, "")
                 }
             };
 
@@ -414,14 +414,14 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id"),
-                    new ReturnSqlReportEntry("C.SomethingElse", 1, false, "SomethingElse"),
-                    new ReturnSqlReportEntry("C.SomeAmountExt", 2, false, "SomeAmountExt"),
-                    new ReturnSqlReportEntry("C.NameExt", 2, false, "NameExt"),
-                    new ReturnSqlReportEntry("C.IdExt", 2, false, "IdExt"),
-                    new ReturnSqlReportEntry("C.SomethingElseExt", 2, false, "SomethingElseExt")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.SomethingElse", 1, false, ""),
+                    new ReturnSqlReportEntry("C.SomeAmountExt", 2, false, ""),
+                    new ReturnSqlReportEntry("C.NameExt", 2, false, ""),
+                    new ReturnSqlReportEntry("C.IdExt", 2, false, ""),
+                    new ReturnSqlReportEntry("C.SomethingElseExt", 2, false, "")
                 }
             };
 
@@ -451,9 +451,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id"),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
                     new ReturnSqlReportEntry("C.Phone AS ThePhoneNumber", 1, false, "ThePhoneNumber"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name")
+                    new ReturnSqlReportEntry("C.Name", 1, false, "")
                 }
             };
 
@@ -469,9 +469,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id"),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
                     new ReturnSqlReportEntry("C.Phone AS DifferentPhoneNumber", 1, false, "DifferentPhoneNumber"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name")
+                    new ReturnSqlReportEntry("C.Name", 1, false, "")
                 }
             };
 
@@ -502,9 +502,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id"),
-                    new ReturnSqlReportEntry("C.Phone", 1, false, "Phone"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name")
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Phone", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, "")
                 }
             };
 
@@ -520,9 +520,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id"),
-                    new ReturnSqlReportEntry("C.PhonE", 1, false, "PhonE"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name")
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.PhonE", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, "")
                 }
             };
 
@@ -562,9 +562,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -590,11 +590,11 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, "SomeAmount"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.NewValue", 1, false, "NewValue"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id"),
-                    new ReturnSqlReportEntry("C.Phone", 1, false, "Phone")
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.NewValue", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Phone", 1, false, "")
                 }
             };
 
@@ -722,8 +722,8 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry("'Hello'", 1, true, ""),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -740,8 +740,8 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry("'Hello 123'", 1, true, ""),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -772,8 +772,8 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry("'Hello'", 1, true, ""),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -789,8 +789,8 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -821,8 +821,8 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -839,7 +839,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry("Hello", 1, true, ""),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -871,8 +871,8 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry("'Hello' AS TheName", 1, true, "TheName"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -889,8 +889,8 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry("'Hello' AS DifferentName", 1, true, "DifferentName"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -921,8 +921,8 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry("'Hello' AS TheName", 1, true, "TheName"),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -939,8 +939,8 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry("'Hello'", 1, true, ""),
-                    new ReturnSqlReportEntry("C.Name", 1, false, "Name"),
-                    new ReturnSqlReportEntry("C.Id", 1, false, "Id")
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
