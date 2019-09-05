@@ -761,6 +761,56 @@
         }
 
         [Test]
+        public void CompareReports_ForChangeStringLiteralWithName_ReturnsNoError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello' AS TheName", 1, true, "TheName"),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello 123' AS TheName", 1, true, "TheName"),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
         public void CompareReports_ForRemoveStringLiteral_ReturnsError()
         {
             // Setup
@@ -860,7 +910,7 @@
         }
 
         [Test]
-        public void CompareReports_ForRenameStringLiteral_ReturnsNoError()
+        public void CompareReports_ForRenameStringLiteral_ReturnsError()
         {
             // Setup
             var returnComparer = new ReturnReportComparer();
@@ -906,11 +956,12 @@
             returnComparer.CompareReports(masterReport, newReport, errors);
 
             // Assert
-            Assert.That(errors.Count, Is.EqualTo(0));
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\'Hello' AS TheName|existing return value is missing from new code"));
         }
 
         [Test]
-        public void CompareReports_ForRemoveNameOnStringLiteral_ReturnsNoError()
+        public void CompareReports_ForRemoveNameOnStringLiteral_ReturnsError()
         {
             // Setup
             var returnComparer = new ReturnReportComparer();
@@ -956,7 +1007,8 @@
             returnComparer.CompareReports(masterReport, newReport, errors);
 
             // Assert
-            Assert.That(errors.Count, Is.EqualTo(0));
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\'Hello' AS TheName|existing return value is missing from new code"));
         }
     }
 }

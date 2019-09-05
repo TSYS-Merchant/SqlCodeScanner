@@ -42,7 +42,8 @@
                 if (masterReturnValue.IsLiteral)
                 {
                     if (newSp.ReturnValues.Count >= count
-                        && newSp.ReturnValues[count - 1].IsLiteral)
+                        && newSp.ReturnValues[count - 1].IsLiteral
+                        && newSp.ReturnValues[count - 1].ColumnNamedAs == masterReturnValue.ColumnNamedAs)
                     {
                         isChangedLiteral = true;
                     }
