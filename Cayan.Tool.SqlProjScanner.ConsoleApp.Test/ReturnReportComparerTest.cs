@@ -761,6 +761,56 @@
         }
 
         [Test]
+        public void CompareReports_ForChangeIntLiteral_ReturnsNoError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("50", 1, true, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("60", 1, true, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
         public void CompareReports_ForChangeStringLiteralWithName_ReturnsNoError()
         {
             // Setup
