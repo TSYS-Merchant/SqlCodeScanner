@@ -26,6 +26,7 @@
             string spText, StoredProcedureReport spReport)
         {
             var isLiteral = CheckIfLiteral(result);
+            var columnName = ParseColumnName(result);
 
             var valueName =
                 spText.Substring(result.SelectElementHolder.StartOffset,
@@ -42,7 +43,7 @@
 
             var entry =
                 new ReturnSqlReportEntry(valueName, result.QueryExpressionId,
-                    isLiteral);
+                    isLiteral, columnName);
 
             spReport.ReturnValues.Add(entry);
         }
@@ -67,6 +68,16 @@
             }
 
             return scalarExpression.Expression is Literal;
+        }
+
+        private string ParseColumnName(SelectElementWrapper result)
+        {
+            if (!(result.SelectElementHolder is SelectScalarExpression scalarExpression))
+            {
+                return string.Empty;
+            }
+
+            return scalarExpression.ColumnName is null ? string.Empty : scalarExpression.ColumnName.Value;
         }
     }
 }

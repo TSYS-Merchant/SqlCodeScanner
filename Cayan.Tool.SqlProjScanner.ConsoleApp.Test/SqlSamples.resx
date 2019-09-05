@@ -266,6 +266,25 @@ BEGIN
 END
 GO</value>
   </data>
+  <data name="NameProcedure" xml:space="preserve">
+    <value>CREATE PROCEDURE [dbo].[NameProcedure]
+	@Id AS INT
+AS
+BEGIN
+
+SET NOCOUNT ON;
+
+DECLARE @TestVar AS VARCHAR(100);
+SET @TestVar = 'Bye'
+	
+SELECT 'Hello' AS SomeName,
+@TestVar AS AnotherName
+FROM dbo.SomeTable1
+WHERE TheId = @Id;
+	
+END
+GO</value>
+  </data>
   <data name="NoBeginSp" xml:space="preserve">
     <value>CREATE PROCEDURE [Schema].[NoBeginSp]
 	@Id AS VARCHAR(100)
