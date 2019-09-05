@@ -441,6 +441,108 @@
         }
 
         [Test]
+        public void CompareReports_ForRenamedField_ReturnsError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.Id", 1, false),
+                    new ReturnSqlReportEntry("C.Phone AS ThePhoneNumber", 1, false),
+                    new ReturnSqlReportEntry("C.Name", 1, false)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.Id", 1, false),
+                    new ReturnSqlReportEntry("C.Phone AS DifferentPhoneNumber", 1, false),
+                    new ReturnSqlReportEntry("C.Name", 1, false)
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\C.Phone AS ThePhoneNumber|existing return value is missing from new code"));
+        }
+
+        [Test]
+        public void CompareReports_ForChangeFieldCase_ReturnsError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.Id", 1, false),
+                    new ReturnSqlReportEntry("C.Phone", 1, false),
+                    new ReturnSqlReportEntry("C.Name", 1, false)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.Id", 1, false),
+                    new ReturnSqlReportEntry("C.PhonE", 1, false),
+                    new ReturnSqlReportEntry("C.Name", 1, false)
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\C.Phone|existing return value is missing from new code"));
+        }
+
+        [Test]
         public void CompareReports_ForNewValueInMiddle_ReturnsError()
         {
             // Setup
@@ -755,6 +857,106 @@
             // Assert
             Assert.That(errors.Count, Is.EqualTo(1));
             Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\C.Name|existing return value is missing from new code"));
+        }
+
+        [Test]
+        public void CompareReports_ForRenameStringLiteral_ReturnsNoError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello' AS TheName", 1, true),
+                    new ReturnSqlReportEntry("C.Name", 1, false),
+                    new ReturnSqlReportEntry("C.Id", 1, false)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello' AS DifferentName", 1, true),
+                    new ReturnSqlReportEntry("C.Name", 1, false),
+                    new ReturnSqlReportEntry("C.Id", 1, false)
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void CompareReports_ForRemoveNameOnStringLiteral_ReturnsNoError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello' AS TheName", 1, true),
+                    new ReturnSqlReportEntry("C.Name", 1, false),
+                    new ReturnSqlReportEntry("C.Id", 1, false)
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello'", 1, true),
+                    new ReturnSqlReportEntry("C.Name", 1, false),
+                    new ReturnSqlReportEntry("C.Id", 1, false)
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
         }
     }
 }
