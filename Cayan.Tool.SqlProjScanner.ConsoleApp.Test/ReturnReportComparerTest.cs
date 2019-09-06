@@ -19,7 +19,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -27,9 +27,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -47,7 +47,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -55,9 +55,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -89,7 +89,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -97,9 +97,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -107,9 +107,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -128,7 +128,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -136,9 +136,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -146,9 +146,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -181,7 +181,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -189,9 +189,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -209,7 +209,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -217,8 +217,8 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -251,7 +251,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -259,9 +259,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -279,7 +279,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -287,9 +287,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Id", 1),
-                    new ReturnSqlReportEntry("C.Name", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, "")
                 }
             };
 
@@ -323,7 +323,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -331,9 +331,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -351,7 +351,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -359,10 +359,10 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1),
-                    new ReturnSqlReportEntry("C.Phone", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Phone", 1, false, "")
                 }
             };
 
@@ -393,12 +393,12 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1),
-                    new ReturnSqlReportEntry("C.SomeAmountExt", 2),
-                    new ReturnSqlReportEntry("C.NameExt", 2),
-                    new ReturnSqlReportEntry("C.IdExt", 2)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.SomeAmountExt", 2, false, ""),
+                    new ReturnSqlReportEntry("C.NameExt", 2, false, ""),
+                    new ReturnSqlReportEntry("C.IdExt", 2, false, "")
                 }
             };
 
@@ -414,14 +414,14 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1),
-                    new ReturnSqlReportEntry("C.SomethingElse", 1),
-                    new ReturnSqlReportEntry("C.SomeAmountExt", 2),
-                    new ReturnSqlReportEntry("C.NameExt", 2),
-                    new ReturnSqlReportEntry("C.IdExt", 2),
-                    new ReturnSqlReportEntry("C.SomethingElseExt", 2)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.SomethingElse", 1, false, ""),
+                    new ReturnSqlReportEntry("C.SomeAmountExt", 2, false, ""),
+                    new ReturnSqlReportEntry("C.NameExt", 2, false, ""),
+                    new ReturnSqlReportEntry("C.IdExt", 2, false, ""),
+                    new ReturnSqlReportEntry("C.SomethingElseExt", 2, false, "")
                 }
             };
 
@@ -441,6 +441,108 @@
         }
 
         [Test]
+        public void CompareReports_ForRenamedField_ReturnsError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Phone AS ThePhoneNumber", 1, false, "ThePhoneNumber"),
+                    new ReturnSqlReportEntry("C.Name", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Phone AS DifferentPhoneNumber", 1, false, "DifferentPhoneNumber"),
+                    new ReturnSqlReportEntry("C.Name", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\C.Phone AS ThePhoneNumber|existing return value is missing from new code"));
+        }
+
+        [Test]
+        public void CompareReports_ForChangeFieldCase_ReturnsError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Phone", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.PhonE", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\C.Phone|existing return value is missing from new code"));
+        }
+
+        [Test]
         public void CompareReports_ForNewValueInMiddle_ReturnsError()
         {
             // Setup
@@ -452,7 +554,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -460,9 +562,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.Id", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
                 }
             };
 
@@ -480,7 +582,7 @@
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
                     new ReturnSqlReportEntry(
-                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, 1024) AS VARCHAR(1024))", 1)
+                        "[FieldB] = CAST(SUBSTRING(ISNULL([SomeTable].[text],''), 1, false, 1, false024) AS VARCHAR(1024))", 1, false, "FieldB")
                 }
             };
 
@@ -488,11 +590,11 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("C.SomeAmount", 1),
-                    new ReturnSqlReportEntry("C.Name", 1),
-                    new ReturnSqlReportEntry("C.NewValue", 1),
-                    new ReturnSqlReportEntry("C.Id", 1),
-                    new ReturnSqlReportEntry("C.Phone", 1)
+                    new ReturnSqlReportEntry("C.SomeAmount", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.NewValue", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Phone", 1, false, "")
                 }
             };
 
@@ -524,7 +626,7 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("*", 1)
+                    new ReturnSqlReportEntry("*", 1, false, "")
                 }
             };
 
@@ -540,9 +642,9 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("Param1", 1),
-                    new ReturnSqlReportEntry("Param2", 1),
-                    new ReturnSqlReportEntry("Param3", 1)
+                    new ReturnSqlReportEntry("Param1", 1, false, ""),
+                    new ReturnSqlReportEntry("Param2", 1, false, ""),
+                    new ReturnSqlReportEntry("Param3", 1, false, "")
                 }
             };
 
@@ -558,9 +660,8 @@
             returnComparer.CompareReports(masterReport, newReport, errors);
 
             // Assert
-            Assert.That(errors.Count, Is.EqualTo(2));
+            Assert.That(errors.Count, Is.EqualTo(1));
             Assert.That(errors[0], Is.EqualTo("Database1\\dbo\\StoredProcedure1\\*|existing return value is missing from new code"));
-            Assert.That(errors[1], Is.EqualTo("Database1\\dbo\\StoredProcedure1\\*|existing return value is out of order"));
         }
 
         [Test]
@@ -574,8 +675,8 @@
             {
                 ReturnValues = new List<ReturnSqlReportEntry>()
                 {
-                    new ReturnSqlReportEntry("A.Name1", 1),
-                    new ReturnSqlReportEntry("A.Name2", 1)
+                    new ReturnSqlReportEntry("A.Name1", 1, false, "Name1"),
+                    new ReturnSqlReportEntry("A.Name2", 1, false, "Name2")
                 }
             };
 
@@ -607,6 +708,357 @@
             Assert.That(errors.Count, Is.EqualTo(2));
             Assert.That(errors[0], Is.EqualTo("Database1\\dbo\\StoredProcedure1\\A.Name1|existing return value is missing from new code"));
             Assert.That(errors[1], Is.EqualTo("Database1\\dbo\\StoredProcedure1\\A.Name2|existing return value is missing from new code"));
+        }
+
+        [Test]
+        public void CompareReports_ForChangeStringLiteral_ReturnsNoError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello'", 1, true, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello 123'", 1, true, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void CompareReports_ForChangeIntLiteral_ReturnsNoError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("50", 1, true, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("60", 1, true, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void CompareReports_ForChangeStringLiteralWithName_ReturnsNoError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello' AS TheName", 1, true, "TheName"),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello 123' AS TheName", 1, true, "TheName"),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void CompareReports_ForRemoveStringLiteral_ReturnsError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello'", 1, true, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\'Hello'|existing return value is missing from new code"));
+        }
+
+        [Test]
+        public void CompareReports_ForReplaceColumnWithLiteral_ReturnsError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("Hello", 1, true, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\C.Name|existing return value is missing from new code"));
+        }
+
+        [Test]
+        public void CompareReports_ForRenameStringLiteral_ReturnsError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello' AS TheName", 1, true, "TheName"),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello' AS DifferentName", 1, true, "DifferentName"),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\'Hello' AS TheName|existing return value is missing from new code"));
+        }
+
+        [Test]
+        public void CompareReports_ForRemoveNameOnStringLiteral_ReturnsError()
+        {
+            // Setup
+            var returnComparer = new ReturnReportComparer();
+            var errors = new List<string>();
+
+            var sp1 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello' AS TheName", 1, true, "TheName"),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var masterReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp1
+                }
+            };
+
+            var sp2 = new StoredProcedureReport("DB1", "dbo", "StoredProcedure1")
+            {
+                ReturnValues = new List<ReturnSqlReportEntry>()
+                {
+                    new ReturnSqlReportEntry("'Hello'", 1, true, ""),
+                    new ReturnSqlReportEntry("C.Name", 1, false, ""),
+                    new ReturnSqlReportEntry("C.Id", 1, false, "")
+                }
+            };
+
+            var newReport = new SqlReport
+            {
+                StoredProcedures = new List<StoredProcedureReport>
+                {
+                    sp2
+                }
+            };
+
+            // Act
+            returnComparer.CompareReports(masterReport, newReport, errors);
+
+            // Assert
+            Assert.That(errors.Count, Is.EqualTo(1));
+            Assert.That(errors[0], Is.EqualTo("DB1\\dbo\\StoredProcedure1\\'Hello' AS TheName|existing return value is missing from new code"));
         }
     }
 }

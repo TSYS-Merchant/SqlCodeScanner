@@ -994,6 +994,50 @@
             htmlReportGenerator.DidNotReceive().GenerateComparisonReport(Arg.Any<string>(), Arg.Any<List<string>>());
         }
 
+        [Test]
+        public void OrchestrateSqlReport_ForNamedVariables_CanParseNames()
+        {
+            // Setup
+            var fileWrapper = Substitute.For<IFileWrapper>();
+            var xmlWriter = Substitute.For<IXmlStreamWriterWrapper>();
+            var xmlWrapper = Substitute.For<IXmlStreamWrapperFactory>();
+            var sqlDirectories = new List<IDirectoryInfoWrapper>();
+            var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
+            var paramReportComparer = Substitute.For<IParamReportComparer>();
+            var returnReportComparer = Substitute.For<IReturnReportComparer>();
+
+            xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
+
+            var sqlFileData = new List<List<List<string>>>
+            {
+                new List<List<string>>
+                {
+                    new List<string>
+                    {
+                        "NameProcedure.sql",
+                        "path\\sql\\theDB\\dbo\\Stored Procedures\\",
+                        SqlSamples.NameProcedure
+                    }
+                },
+                new List<List<string>>()
+            };
+
+            var directoryFactory =
+                SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
+
+            var scanner =
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+
+            // Act
+            var result = scanner.OrchestrateSqlReport(
+                "path\\sql", "reports\\data.xml",
+                null,
+                true);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(true));
+        }
+
         private IDirectoryWrapperFactory SimulateSqlFiles(
             string path,
             List<List<List<string>>> sqlData, IFileWrapper fileWrapper,

@@ -31,15 +31,31 @@
         private void CheckForMissingReturnValues(StoredProcedureReport masterSp,
             StoredProcedureReport newSp, List<string> errors)
         {
+            var count = 1;
+            var isChangedLiteral = false;
+
             foreach (var masterReturnValue in masterSp.ReturnValues)
             {
                 var newReturnValue = newSp.ReturnValues.FirstOrDefault(
                     x => Regex.Replace(x.ReturnValueName, @"\s+", " ") == Regex.Replace(masterReturnValue.ReturnValueName, @"\s+", " "));
 
-                if (newReturnValue == null)
+                if (masterReturnValue.IsLiteral)
+                {
+                    if (newSp.ReturnValues.Count >= count
+                        && newSp.ReturnValues[count - 1].IsLiteral
+                        && newSp.ReturnValues[count - 1].ColumnNamedAs == masterReturnValue.ColumnNamedAs)
+                    {
+                        isChangedLiteral = true;
+                    }
+                }
+
+                if (newReturnValue == null
+                    && !isChangedLiteral)
                 {
                     errors.Add($"{masterSp.SpUniqueName}\\{masterReturnValue.ReturnValueName}|existing return value is missing from new code");
                 }
+
+                count++;
             }
         }
 
@@ -68,9 +84,16 @@
 
                 for (var i = 0; i < masterReturns.Count; i++)
                 {
-                    if (newReturns[i].ReturnValueName != masterReturns[i].ReturnValueName)
+                    if (newReturns[i].ReturnValueName == masterReturns[i].ReturnValueName ||
+                        masterReturns[i].IsLiteral)
                     {
-                        errors.Add($"{masterSp.SpUniqueName}\\{masterSp.ReturnValues[i].ReturnValueName}|existing return value is out of order");
+                        continue;
+
+                    }
+                    if (newReturns.Any(x => x.ReturnValueName == masterReturns[i].ReturnValueName))
+                    {
+                        errors.Add(
+                            $"{masterSp.SpUniqueName}\\{masterSp.ReturnValues[i].ReturnValueName}|existing return value is out of order");
                     }
                 }
             }

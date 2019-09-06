@@ -233,6 +233,31 @@ namespace Cayan.Tool.SqlProjScanner.ConsoleApp.Test {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to CREATE PROCEDURE [dbo].[NameProcedure]
+        ///	@Id AS INT
+        ///AS
+        ///BEGIN
+        ///
+        ///SET NOCOUNT ON;
+        ///
+        ///DECLARE @TestVar AS VARCHAR(100);
+        ///SET @TestVar = &apos;Bye&apos;
+        ///	
+        ///SELECT &apos;Hello&apos; AS SomeName,
+        ///@TestVar AS AnotherName
+        ///FROM dbo.SomeTable1
+        ///WHERE TheId = @Id;
+        ///	
+        ///END
+        ///GO.
+        /// </summary>
+        internal static string NameProcedure {
+            get {
+                return ResourceManager.GetString("NameProcedure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to CREATE PROCEDURE [Schema].[NoBeginSp]
         ///	@Id AS VARCHAR(100)
         ///AS
