@@ -23,13 +23,16 @@
 
         public override void Visit(SelectScalarExpression node)
         {
-            ReturnValues.Add(new SelectElementWrapper(node, _queryExpressionId));
+            var columnName = node.ColumnName is null ? string.Empty : node.ColumnName.Value;
+            var isLiteral = node.Expression is Literal;
+
+            ReturnValues.Add(new SelectElementWrapper(node, _queryExpressionId, columnName, isLiteral));
             base.Visit(node);
         }
 
         public override void Visit(SelectStarExpression node)
         {
-            ReturnValues.Add(new SelectElementWrapper(node, _queryExpressionId));
+            ReturnValues.Add(new SelectElementWrapper(node, _queryExpressionId, string.Empty, false));
             base.Visit(node);
         }
     }

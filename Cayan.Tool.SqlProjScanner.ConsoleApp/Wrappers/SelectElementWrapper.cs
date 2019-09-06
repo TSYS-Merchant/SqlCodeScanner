@@ -8,11 +8,18 @@
 
         public int QueryExpressionId { get; set; }
 
+        public string ColumnName { get; set; }
+
+        public bool IsLiteral { get; set; }
+
         public SelectElementWrapper(SelectElement selectElementHolder,
-            int queryExpressionId)
+            int queryExpressionId, string columnName,
+            bool isLiteral)
         {
             SelectElementHolder = selectElementHolder;
             QueryExpressionId = queryExpressionId;
+            ColumnName = columnName;
+            IsLiteral = isLiteral;
         }
     }
 }
