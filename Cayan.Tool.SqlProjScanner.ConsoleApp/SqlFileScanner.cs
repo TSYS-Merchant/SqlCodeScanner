@@ -124,7 +124,7 @@
         {
             var sql = _fileWrapper.ReadAllText(spFile.FullName);
             
-            var sqlParser = new TSql120Parser(false);
+            var sqlParser = new TSql140Parser(false);
 
             var parsedSql =
                 sqlParser.Parse(new StringReader(sql), out var parseErrors);
