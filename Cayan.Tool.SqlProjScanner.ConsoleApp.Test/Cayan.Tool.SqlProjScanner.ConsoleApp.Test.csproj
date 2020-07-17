@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="ConsoleArgumentsTests.cs" />
     <Compile Include="HtmlReportGeneratorTests.cs" />
+    <Compile Include="IgnoreListTests.cs" />
     <Compile Include="ParamReportComparerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReturnReportComparerTest.cs" />

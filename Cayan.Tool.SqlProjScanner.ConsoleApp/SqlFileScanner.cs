@@ -23,6 +23,9 @@
         private readonly string _storedProcedureDirectoryName =
             ConfigurationManager.AppSettings["StoredProcedureDirectoryName"];
 
+        private readonly string _schemaIgnoreListFileName =
+            ConfigurationManager.AppSettings["SchemaIgnoreListFileName"];
+
         public SqlFileScanner()
             :this(new FileWrapper(), new XmlStreamWrapperFactory(),
                 new DirectoryWrapperFactory(), new HtmlReportGenerator(),
@@ -63,12 +66,15 @@
                 throw new ArgumentException("data-file path cannot be null or empty.");
             }
 
+            var ignoreFilePath = $"{sqlCodePath}\\{_schemaIgnoreListFileName}";
+            var ignoreList = new IgnoreList(_fileWrapper, ignoreFilePath);
+
             if (!createDataFile && string.IsNullOrEmpty(htmlReportPath))
             {
                 throw new ArgumentException("report path cannot be null or empty.");
             }
 
-            ScanSqlFilesInPath(sqlCodePath);
+            ScanSqlFilesInPath(sqlCodePath, ignoreList);
 
             if (createDataFile)
             {
@@ -97,7 +103,8 @@
             _htmlReportGenerator.GenerateComparisonReport(htmlReportPath, errors);
         }
 
-        private void ScanSqlFilesInPath(string sqlCodePath)
+        private void ScanSqlFilesInPath(string sqlCodePath,
+            IgnoreList ignoreList)
         {
             var sqlDirectory = _directoryFactory.CreateDirectoryWrapper(sqlCodePath);
 
@@ -115,7 +122,7 @@
                 foreach (var sp in allSps)
                 {
                     var tSqlScript = ParseSp(sp);
-                    ScanSp(tSqlScript, sp.FullName);
+                    ScanSp(tSqlScript, sp.FullName, ignoreList);
                 }
             }
         }
@@ -151,7 +158,8 @@
             return result as TSqlScript;
         }
 
-        private void ScanSp(TSqlScript tSqlScript, string fullPath)
+        private void ScanSp(TSqlScript tSqlScript, string fullPath,
+            IgnoreList ignoreList)
         {
             var parameterScanner = new StoredProcedureParameterScanner();
             var returnValueScanner = new StoredProcedureReturnValueScanner();
@@ -162,6 +170,11 @@
 
             var schema = scriptParts[scriptParts.Length - solutionSchemaOffset];
             var db = scriptParts[scriptParts.Length - dbOffset];
+
+            if (ignoreList.IsSchemaIgnored(db, schema))
+            {
+                return;
+            }
 
             foreach (var batch in tSqlScript.Batches)
             {
