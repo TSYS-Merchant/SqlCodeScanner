@@ -264,5 +264,97 @@
             fileWrapper.DidNotReceive().ReadLines(ignoreFile);
             Assert.That(isIgnored, Is.EqualTo(false));
         }
+
+        [Test]
+        public void IsSchemaIgnored_ForWildcardDbAndSchemaMatch_DoesIgnore()
+        {
+            // Setup
+            string[] ignoreSchemas = { "db1.Schema1", "*.Schema2" };
+            var ignoreFile = "SchemaIgnore.txt";
+
+            var fileWrapper = Substitute.For<IFileWrapper>();
+
+            fileWrapper.Exists(ignoreFile).Returns(true);
+            fileWrapper.ReadLines(ignoreFile)
+                .Returns(ignoreSchemas);
+
+            var ignoreList = new IgnoreList(fileWrapper, ignoreFile);
+
+            // Act
+            var isIgnored = ignoreList.IsSchemaIgnored("Anything", "Schema2");
+
+            // Assert
+            fileWrapper.Received(1).ReadLines(ignoreFile);
+            Assert.That(isIgnored, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void IsSchemaIgnored_ForWildcardDbAndNotSchemaMatch_DoesNotIgnore()
+        {
+            // Setup
+            string[] ignoreSchemas = { "db1.Schema1", "*.Schema2" };
+            var ignoreFile = "SchemaIgnore.txt";
+
+            var fileWrapper = Substitute.For<IFileWrapper>();
+
+            fileWrapper.Exists(ignoreFile).Returns(true);
+            fileWrapper.ReadLines(ignoreFile)
+                .Returns(ignoreSchemas);
+
+            var ignoreList = new IgnoreList(fileWrapper, ignoreFile);
+
+            // Act
+            var isIgnored = ignoreList.IsSchemaIgnored("Anything", "Schema3");
+
+            // Assert
+            fileWrapper.Received(1).ReadLines(ignoreFile);
+            Assert.That(isIgnored, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void IsSchemaIgnored_ForWildcardSchemaAndDbMatch_DoesIgnore()
+        {
+            // Setup
+            string[] ignoreSchemas = { "db1.Schema1", "db2.*" };
+            var ignoreFile = "SchemaIgnore.txt";
+
+            var fileWrapper = Substitute.For<IFileWrapper>();
+
+            fileWrapper.Exists(ignoreFile).Returns(true);
+            fileWrapper.ReadLines(ignoreFile)
+                .Returns(ignoreSchemas);
+
+            var ignoreList = new IgnoreList(fileWrapper, ignoreFile);
+
+            // Act
+            var isIgnored = ignoreList.IsSchemaIgnored("db2", "Anything");
+
+            // Assert
+            fileWrapper.Received(1).ReadLines(ignoreFile);
+            Assert.That(isIgnored, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void IsSchemaIgnored_ForWildcardSchemaAndNotDbMatch_DoesNotIgnore()
+        {
+            // Setup
+            string[] ignoreSchemas = { "db1.Schema1", "db2.*" };
+            var ignoreFile = "SchemaIgnore.txt";
+
+            var fileWrapper = Substitute.For<IFileWrapper>();
+
+            fileWrapper.Exists(ignoreFile).Returns(true);
+            fileWrapper.ReadLines(ignoreFile)
+                .Returns(ignoreSchemas);
+
+            var ignoreList = new IgnoreList(fileWrapper, ignoreFile);
+
+            // Act
+            var isIgnored = ignoreList.IsSchemaIgnored("db1", "Schema3");
+
+            // Assert
+            fileWrapper.Received(1).ReadLines(ignoreFile);
+            Assert.That(isIgnored, Is.EqualTo(false));
+        }
     }
 }

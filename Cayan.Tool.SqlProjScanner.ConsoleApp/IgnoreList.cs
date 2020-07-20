@@ -23,8 +23,8 @@
         public bool IsSchemaIgnored(string db, string schema)
         {
             var matchingSchema =
-                IgnoreSchemas.FirstOrDefault(entry => entry.Db == db.ToLower()
-                                                       && entry.Schema == schema.ToLower());
+                IgnoreSchemas.FirstOrDefault(entry => (entry.Db == db.ToLower() || entry.Db == "*")
+                                                       && (entry.Schema == schema.ToLower() || entry.Schema == "*"));
 
             return matchingSchema != null;
         }
