@@ -8,10 +8,11 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Cayan.Tool.SqlProjScanner.ConsoleApp</RootNamespace>
     <AssemblyName>SqlScanner</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -58,9 +59,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IgnoreList.cs" />
     <Compile Include="IHtmlReportGenerator.cs" />
     <Compile Include="IParamReportComparer.cs" />
     <Compile Include="IReturnReportComparer.cs" />
+    <Compile Include="ReportObjects\IgnoreSchemaEntry.cs" />
     <Compile Include="ReportObjects\StoredProcedureReport.cs" />
     <Compile Include="Resources\ConsoleOutput.Designer.cs">
       <AutoGen>True</AutoGen>

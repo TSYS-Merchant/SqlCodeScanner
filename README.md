@@ -21,6 +21,28 @@ DatabaseName\SchemaName\Stored Procedures\
 
 The stored procedures must be .sql files inside of the “Stored Procedures” folder. It is possible to use a different name for the stored procedures folder by changing the “StoredProcedureDirectoryName” setting in the app.config file.
 
+
+You can optionally add an ignore list, SchemaIgnoreList.txt, to the root of your SQL project to specify certain database schemas to be excluded from the scan.
+
+A sample exclude file is below:
+
+
+-- Comments are ignored
+
+-- Place schemas that you wish to exclude from the run in here
+
+-- Use the format: DatabaseName.SchemaName
+
+-- With each entry on its own line
+
+
+
+
+db1.SchemaToExclude1 
+
+
+db2.SchemaToExclude1 
+
 ## Command Line Arguments
 
 Enter no arguments, -h or -help for instructions
