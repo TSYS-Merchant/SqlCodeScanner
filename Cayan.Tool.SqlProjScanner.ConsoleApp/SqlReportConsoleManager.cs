@@ -12,8 +12,8 @@
         private const int SuccessReturnValue = 0;
         private const int FailureReturnValue = 2;
 
-        public SqlReportConsoleManager() 
-        : this(new SqlFileScanner(), new ConsoleWrapper())
+        public SqlReportConsoleManager(Configuration config) 
+        : this(new SqlFileScanner(config), new ConsoleWrapper())
         {
         }
 

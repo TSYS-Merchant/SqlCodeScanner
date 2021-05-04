@@ -3,7 +3,6 @@
     using Microsoft.SqlServer.TransactSql.ScriptDom;
     using ReportObjects;
     using System;
-    using System.Configuration;
     using System.IO;
     using System.Linq;
     using System.Collections.Generic;
@@ -20,16 +19,15 @@
         private readonly IParamReportComparer _paramReportComparer;
         private readonly IReturnReportComparer _returnReportComparer;
 
-        private readonly string _storedProcedureDirectoryName =
-            ConfigurationManager.AppSettings["StoredProcedureDirectoryName"];
+        private readonly string _storedProcedureDirectoryName;
 
-        private readonly string _schemaIgnoreListFileName =
-            ConfigurationManager.AppSettings["SchemaIgnoreListFileName"];
+        private readonly string _schemaIgnoreListFileName;
 
-        public SqlFileScanner()
+        public SqlFileScanner(Configuration config)
             :this(new FileWrapper(), new XmlStreamWrapperFactory(),
                 new DirectoryWrapperFactory(), new HtmlReportGenerator(),
-                new ParamReportComparer(), new ReturnReportComparer())
+                new ParamReportComparer(), new ReturnReportComparer(),
+                config)
         {
         }
 
@@ -38,7 +36,8 @@
             IDirectoryWrapperFactory directoryWrapperFactory,
             IHtmlReportGenerator htmlReportGenerator,
             IParamReportComparer paramReportComparer,
-            IReturnReportComparer returnReportComparer)
+            IReturnReportComparer returnReportComparer,
+            Configuration config)
         {
             _fileWrapper = fileWrapper;
 
@@ -51,6 +50,9 @@
             _returnReportComparer = returnReportComparer;
 
             _sqlReport = new SqlReport();
+
+            _storedProcedureDirectoryName = config.AppSettings.StoredProcedureDirectoryName;
+            _schemaIgnoreListFileName = config.AppSettings.SchemaIgnoreListFileName;
         }
 
         public bool OrchestrateSqlReport(string sqlCodePath, string dataFilePath,

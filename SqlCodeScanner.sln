@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29215.179
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cayan.Tool.SqlProjScanner.ConsoleApp", "Cayan.Tool.SqlProjScanner.ConsoleApp\Cayan.Tool.SqlProjScanner.ConsoleApp.csproj", "{D0F124BE-0592-48EB-98E1-0815D09844EB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cayan.Tool.SqlProjScanner.ConsoleApp", "Cayan.Tool.SqlProjScanner.ConsoleApp\Cayan.Tool.SqlProjScanner.ConsoleApp.csproj", "{7B0EBAB4-09A5-4277-B4A8-A8F68094C193}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cayan.Tool.SqlProjScanner.ConsoleApp.Test", "Cayan.Tool.SqlProjScanner.ConsoleApp.Test\Cayan.Tool.SqlProjScanner.ConsoleApp.Test.csproj", "{5D8B4098-A3E8-4FFF-B345-B116D3EB5AA8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cayan.Tool.SqlProjScanner.ConsoleApp.Test", "Cayan.Tool.SqlProjScanner.ConsoleApp.Test\Cayan.Tool.SqlProjScanner.ConsoleApp.Test.csproj", "{676A391F-5420-4874-B088-CF25E35BB729}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D0F124BE-0592-48EB-98E1-0815D09844EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0F124BE-0592-48EB-98E1-0815D09844EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0F124BE-0592-48EB-98E1-0815D09844EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0F124BE-0592-48EB-98E1-0815D09844EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D8B4098-A3E8-4FFF-B345-B116D3EB5AA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D8B4098-A3E8-4FFF-B345-B116D3EB5AA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D8B4098-A3E8-4FFF-B345-B116D3EB5AA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D8B4098-A3E8-4FFF-B345-B116D3EB5AA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B0EBAB4-09A5-4277-B4A8-A8F68094C193}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B0EBAB4-09A5-4277-B4A8-A8F68094C193}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B0EBAB4-09A5-4277-B4A8-A8F68094C193}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B0EBAB4-09A5-4277-B4A8-A8F68094C193}.Release|Any CPU.Build.0 = Release|Any CPU
+		{676A391F-5420-4874-B088-CF25E35BB729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{676A391F-5420-4874-B088-CF25E35BB729}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{676A391F-5420-4874-B088-CF25E35BB729}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{676A391F-5420-4874-B088-CF25E35BB729}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
