@@ -22,6 +22,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -43,7 +50,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -72,6 +79,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -93,7 +107,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -129,6 +143,14 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
+
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -150,7 +172,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -186,6 +208,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "", 
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -207,7 +236,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -239,6 +268,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -260,7 +296,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -292,6 +328,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -313,7 +356,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -345,6 +388,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -366,7 +416,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -395,6 +445,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -416,7 +473,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -447,6 +504,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -462,7 +526,7 @@
                 .Returns(directoryWrapper);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -491,6 +555,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -512,7 +583,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var ex = Assert.Throws<ArgumentException>(
@@ -541,6 +612,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -562,7 +640,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var ex = Assert.Throws<ArgumentException>(
@@ -591,6 +669,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -612,7 +697,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var ex = Assert.Throws<ArgumentException>(
@@ -641,6 +726,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -662,7 +754,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -699,6 +791,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             fileWrapper.ReadAllText("reports\\data.xml").Returns(SqlSamples.ReportSampleXml);
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
@@ -720,7 +819,7 @@
             var directoryFactory =
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
-            var scanner = new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+            var scanner = new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -747,6 +846,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             fileWrapper.ReadAllText("reports\\data.xml").Returns(SqlSamples.ReportSampleXml);
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
@@ -768,7 +874,7 @@
             var directoryFactory =
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
-            var scanner = new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+            var scanner = new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -794,6 +900,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             fileWrapper.ReadAllText("reports\\data.xml").Returns(SqlSamples.ReportSampleXml);
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
@@ -815,7 +928,7 @@
             var directoryFactory =
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
-            var scanner = new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+            var scanner = new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -843,6 +956,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             fileWrapper.ReadAllText("reports\\data.xml").Returns(SqlSamples.ReportSampleXml);
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
@@ -874,7 +994,7 @@
                 });
 
             var scanner = new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer,
-                returnReportComparer);
+                returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -901,6 +1021,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -923,7 +1050,7 @@
 
             var scanner =
                 new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer,
-                    returnReportComparer);
+                    returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(
@@ -956,6 +1083,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -977,7 +1111,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var ex = Assert.Throws<Exception>(
@@ -1005,6 +1139,13 @@
             var htmlReportGenerator = Substitute.For<IHtmlReportGenerator>();
             var paramReportComparer = Substitute.For<IParamReportComparer>();
             var returnReportComparer = Substitute.For<IReturnReportComparer>();
+            var config = new Configuration
+            {
+                AppSettings = {
+                    SchemaIgnoreListFileName = "",
+                    StoredProcedureDirectoryName = "Stored Procedures"
+                }
+            };
 
             xmlWrapper.CreateXmlWriter(Arg.Any<string>()).Returns(xmlWriter);
 
@@ -1026,7 +1167,7 @@
                 SimulateSqlFiles("path\\sql", sqlFileData, fileWrapper, sqlDirectories);
 
             var scanner =
-                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer);
+                new SqlFileScanner(fileWrapper, xmlWrapper, directoryFactory, htmlReportGenerator, paramReportComparer, returnReportComparer, config);
 
             // Act
             var result = scanner.OrchestrateSqlReport(

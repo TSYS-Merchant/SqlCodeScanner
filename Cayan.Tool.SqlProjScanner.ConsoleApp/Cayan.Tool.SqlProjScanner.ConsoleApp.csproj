@@ -1,120 +1,47 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D0F124BE-0592-48EB-98E1-0815D09844EB}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Cayan.Tool.SqlProjScanner.ConsoleApp</RootNamespace>
-    <AssemblyName>SqlScanner</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
+    <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4384.2\lib\net46\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Data.Tools.Utilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4384.2\lib\net46\Microsoft.Data.Tools.Utilities.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.SqlServer.Dac, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4384.2\lib\net46\Microsoft.SqlServer.Dac.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.SqlServer.Dac.Extensions, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4384.2\lib\net46\Microsoft.SqlServer.Dac.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.SqlServer.TransactSql.ScriptDom, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4384.2\lib\net46\Microsoft.SqlServer.TransactSql.ScriptDom.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.SqlServer.Types, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4384.2\lib\net46\Microsoft.SqlServer.Types.dll</HintPath>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="IgnoreList.cs" />
-    <Compile Include="IHtmlReportGenerator.cs" />
-    <Compile Include="IParamReportComparer.cs" />
-    <Compile Include="IReturnReportComparer.cs" />
-    <Compile Include="ReportObjects\IgnoreSchemaEntry.cs" />
-    <Compile Include="ReportObjects\StoredProcedureReport.cs" />
-    <Compile Include="Resources\ConsoleOutput.Designer.cs">
-      <AutoGen>True</AutoGen>
+    <Compile Update="Resources\ConsoleOutput.Designer.cs">
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>ConsoleOutput.resx</DependentUpon>
     </Compile>
-    <Compile Include="ReturnReportComparer.cs" />
-    <Compile Include="ReportObjects\ReturnSqlReportEntry.cs" />
-    <Compile Include="ConsoleArguments.cs" />
-    <Compile Include="SelectElementVisitor.cs" />
-    <Compile Include="SqlDbTypeEnumWrapper.cs" />
-    <Compile Include="StoredProcedureReturnValueScanner.cs" />
-    <Compile Include="StoredProcedureParameterScanner.cs" />
-    <Compile Include="Wrappers\ConsoleWrapper.cs" />
-    <Compile Include="Wrappers\DirectoryInfoWrapper.cs" />
-    <Compile Include="Wrappers\DirectoryWrapper.cs" />
-    <Compile Include="Wrappers\DirectoryWrapperFactory.cs" />
-    <Compile Include="Wrappers\FileInfoWrapper.cs" />
-    <Compile Include="HtmlReportGenerator.cs" />
-    <Compile Include="Wrappers\FileWrapper.cs" />
-    <Compile Include="Wrappers\IConsoleWrapper.cs" />
-    <Compile Include="Wrappers\IDirectoryInfoWrapper.cs" />
-    <Compile Include="Wrappers\IDirectoryWrapper.cs" />
-    <Compile Include="Wrappers\IDirectoryWrapperFactory.cs" />
-    <Compile Include="Wrappers\IFileInfoWrapper.cs" />
-    <Compile Include="ISqlFileScanner.cs" />
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ParamReportComparer.cs" />
-    <Compile Include="SqlFileScanner.cs" />
-    <Compile Include="ReportObjects\SqlReport.cs" />
-    <Compile Include="ReportObjects\ParamSqlReportEntry.cs" />
-    <Compile Include="SqlReportConsoleManager.cs" />
-    <Compile Include="SqlReportWriter.cs" />
-    <Compile Include="Wrappers\IFileWrapper.cs" />
-    <Compile Include="Wrappers\IXmlStreamWriterWrapper.cs" />
-    <Compile Include="Wrappers\IXmlStreamWrapperFactory.cs" />
-    <Compile Include="Wrappers\SelectElementWrapper.cs" />
-    <Compile Include="Wrappers\XmlStreamWriterWrapper.cs" />
-    <Compile Include="Wrappers\XmlStreamWrapperFactory.cs" />
   </ItemGroup>
+
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\ConsoleOutput.resx">
+    <EmbeddedResource Update="Resources\ConsoleOutput.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ConsoleOutput.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+  <ItemGroup>
+    <Folder Include="ReportObjects\" />
+    <Folder Include="Wrappers\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>Cayan.Tool.SqlProjScanner.ConsoleApp.Test</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="Microsoft.SqlServer.DacFx.x64" Version="150.4384.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
